@@ -25,6 +25,12 @@ def test_fix_leading_punctuation():
     assert punctuation.fix_leading_punctuation(input_text) == output_text, "Should not have leading punctuation"
 
 
+def test_fix_leading_double_punctuation():
+    input_text = ["", ", ", "oui", "non"]
+    output_text = ["oui", "non"]
+    assert punctuation.fix_leading_punctuation(input_text) == output_text, "Should not have leading punctuation"
+
+
 def test_all_punctuation():
     test_fix_space_before_comma()
     print("test_fix_space_before_comma → OK")
@@ -33,7 +39,9 @@ def test_all_punctuation():
     test_fix_double_spaces()
     print("test_fix_double_spaces → OK")
     test_fix_leading_punctuation()
-    print("test_fix_leading_space → OK")
+    print("test_fix_leading_punctuation → OK")
+    test_fix_leading_double_punctuation()
+    print("test_fix_leading_double_punctuation → OK")
 
 
 if __name__ == "__main__":
