@@ -26,10 +26,6 @@ def adapt_punctuation(text, index):
     if index == 0:
         text.pop(index)
 
-    # If there is a comma+space before, remove the space but keep the comma.
-    elif text[index - 1] == ", ":
-        text[index - 1] = ","
-
     # If there is a space before, remove it.
     else:
         text.pop(index - 1)
