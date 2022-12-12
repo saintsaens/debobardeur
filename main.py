@@ -1,3 +1,4 @@
+import capitalization
 import text_manipulation
 import punctuation
 
@@ -19,5 +20,6 @@ for i in ADVERBES:
             text_without_bobards = text_manipulation.remove_element_from_text(text_without_bobards, i)
 
 text_without_bobards = punctuation.fix_punctuation(text_without_bobards)
+text_without_bobards = capitalization.fix_capitalization(text_without_bobards)
 
 print(text_without_bobards)
