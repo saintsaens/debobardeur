@@ -19,15 +19,27 @@ def fix_double_spaces(text):
     return text
 
 
+def fix_leading_punctuation(text):
+    # Remove leading punctuation, if there is one.
+    while True:
+        # Check the first character of the first element is alphabet.
+        if text[0] and text[0][0].isalpha():
+            break
+        else:
+            text.pop(0)
+    return text
+
+
 def fix_punctuation(text):
     # Create a list of the text, including punctuation.
     split_text = re.split("(\W+)", text)
     split_text = fix_commas(split_text)
     split_text = fix_double_spaces(split_text)
+    split_text = fix_leading_punctuation(split_text)
 
     # Stitch the list back together.
     reunited_text = ""
-    for x in range(0, len(split_text)):
-        reunited_text = reunited_text + split_text[x]
+    for x in split_text:
+        reunited_text += x
 
     return reunited_text
