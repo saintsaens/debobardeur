@@ -5,6 +5,9 @@ ADVERBES: list[str] = ["Extrêmement", "extrêmement", "réellement", "vraiment"
 
 def debobardeur(text_with_bobards):
 
+    if text_with_bobards == "":
+        return "🎉"
+
     text_without_bobards = text_with_bobards
 
     for i in ADVERBES:
