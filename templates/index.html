@@ -1,19 +1,16 @@
 {% extends "layout.html" %}
 {% block body %}
     <h1>Débobardeur</h1>
-  <form method="POST">
-      <textarea
-              rows="5"
-              cols="40"
-              id="text_with_bobards"
-              name="text_with_bobards"
-      ></textarea>
-      <br>
-      <br>
-    <input type="submit" value="Débobardiser">
-      </form>
-      <br>
-      <a href="{{ url_for('corrections.debobardize') }}">Débobardiser</a>
-    <br>
+    <form method="POST">
+        <textarea
+            rows="5"
+            cols="40"
+            id="text_with_bobards"
+            name="text_with_bobards"
+        ></textarea>
+        <br>
+        <br>
+        <input type="submit" value="Débobardiser">
+    </form>
     <br>
 {% endblock %}
