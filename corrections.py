@@ -4,10 +4,10 @@ from flask import (
     Blueprint, flash, render_template, request
 )
 
-bp = Blueprint('corrections', __name__, url_prefix='/corrections')
+bp = Blueprint('corrections', __name__)
 
 
-@bp.route("/debobardize", methods=('GET', 'POST'))
+@bp.route("/", methods=('GET', 'POST'))
 def debobardize():
     if request.method == 'POST':
         text_with_bobards = request.form["text_with_bobards"]
