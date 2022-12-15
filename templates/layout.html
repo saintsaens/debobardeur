@@ -1,0 +1,10 @@
+<!doctype html>
+<title>Débobardeur</title>
+{% block body %}{% endblock %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
