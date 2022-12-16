@@ -30,12 +30,30 @@ def fix_leading_punctuation(text):
     return text
 
 
+def fix_space_before_final_period(text):
+    for i in text:
+        if i.find(" .") != -1:
+            space_before_final_period_index = text.index(i)
+            text[space_before_final_period_index] = "."
+    return text
+
+
+def fix_space_before_period(text):
+    for i in text:
+        if i.find(" . ") != -1:
+            space_before_final_period_index = text.index(i)
+            text[space_before_final_period_index] = ". "
+    return text
+
+
 def fix_punctuation(text):
     # Create a list of the text, including punctuation.
     split_text = re.split("(\W+)", text)
     split_text = fix_commas(split_text)
     split_text = fix_double_spaces(split_text)
     split_text = fix_leading_punctuation(split_text)
+    split_text = fix_space_before_period(split_text)
+    split_text = fix_space_before_final_period(split_text)
 
     # Stitch the list back together.
     reunited_text = ""
