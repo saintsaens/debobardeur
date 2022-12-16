@@ -8,7 +8,7 @@ def fix_capitalization_at_start_of_text(text):
 
 def fix_capitalization_after_period(text):
     for i in text:
-        if i.find(".") != -1:
+        if i.find(". ") != -1:
             period_index = text.index(i)
             text[period_index + 1] = text[period_index + 1].capitalize()
 
