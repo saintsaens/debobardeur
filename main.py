@@ -8,16 +8,15 @@ def debobardeur(text_with_bobards):
     if text_with_bobards == "":
         return "🎉"
 
-    text_without_bobards = text_with_bobards
+    text_being_debobardized = text_with_bobards
 
     for i in ADVERBES:
-        print("Handling: " + i)
-        if text_without_bobards.find(i) != -1:
-            while text_without_bobards.find(i) != -1:  # In case there are several occurrences.
-                print("Found: " + i)
-                text_without_bobards = text_manipulation.remove_element_from_text(text_without_bobards, i)
+        if text_being_debobardized.find(i) != -1:
+            text_being_debobardized = text_manipulation.remove_element_from_text(text_being_debobardized, i)
 
-    text_without_bobards = punctuation.fix_punctuation(text_without_bobards)
-    text_without_bobards = capitalization.fix_capitalization(text_without_bobards)
+    text_being_debobardized = punctuation.fix_punctuation(text_being_debobardized)
+    text_being_debobardized = capitalization.fix_capitalization(text_being_debobardized)
+
+    text_without_bobards = text_being_debobardized
 
     return text_without_bobards
