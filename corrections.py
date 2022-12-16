@@ -11,7 +11,12 @@ bp = Blueprint('corrections', __name__)
 def debobardize():
     if request.method == 'POST':
         text_with_bobards = request.form["text_with_bobards"]
-        text_without_bobards = main.debobardeur(text_with_bobards)
-        flash(text_without_bobards)
+        if text_with_bobards == "":
+            flash("🎉")
+        else:
+            lines = text_with_bobards.splitlines()
+            for x in lines:
+                x = main.debobardeur(x)
+                flash(x)
 
     return render_template("index.html")
