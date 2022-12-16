@@ -46,6 +46,11 @@ def fix_space_before_period(text):
     return text
 
 
+def fix_ugly_arrows(text):
+    nice_arrowed_text = text.replace("->", "→")
+    return nice_arrowed_text
+
+
 def fix_punctuation(text):
     # Create a list of the text, including punctuation.
     split_text = re.split("(\W+)", text)
@@ -60,4 +65,6 @@ def fix_punctuation(text):
     for x in split_text:
         reunited_text += x
 
-    return reunited_text
+    fixed_text = fix_ugly_arrows(reunited_text)
+
+    return fixed_text
