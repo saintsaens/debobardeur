@@ -12,7 +12,7 @@ def test_remove_element_with_two_words_from_text():
     input_text = "Lorem ipsum dolor sit amet"
     bobard = "ipsum dolor"
     output_text = "Lorem sit amet"
-    assert text_manipulation.remove_element_from_text(input_text, bobard) == output_text, "Should be Lorem sit amet"
+    assert text_manipulation.remove_element_from_text(input_text, bobard) == output_text, "Should be Lorem   sit amet"
 
 
 def test_all_text_manipulation():
