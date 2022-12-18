@@ -17,3 +17,5 @@ build/
 *.egg-info/
 
 .DS_Store
+
+node_modules/
