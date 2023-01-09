@@ -1,4 +1,11 @@
-html { font-family: sans-serif; padding: 1rem; }
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
 
 .button-4 {
   appearance: none;

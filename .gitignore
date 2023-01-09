@@ -1,23 +1,19 @@
+# Logs
+logs
+*.log
 
-__pycache__/
-*.pyc
-*.iml
-*.xml
-
-venv/
-
-instance/
-
-.pytest_cache/
-.coverage
-htmlcov/
-
-dist/
-build/
-*.egg-info/
-
-.DS_Store
-
+# Dependency directories
 node_modules/
 
-conf.js
+# Local env files
+.env
+
+# Backup files
+*.bak
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Binary files
+bin/
