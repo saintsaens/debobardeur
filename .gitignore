@@ -17,3 +17,6 @@ Thumbs.db
 
 # Binary files
 bin/
+
+# Conf files
+conf.js
