@@ -20,3 +20,6 @@ bin/
 
 # Conf files
 conf.js
+
+# DB files
+bobards.json
