@@ -1,12 +1,11 @@
 const { Client } = require('@notionhq/client');
-
-const config = require('../../conf');
+var path = require('path');
+const config = require(path.join(__dirname, "../../conf"));
 const fs = require('fs');
 
 const notion = new Client({ auth: config.CLIENT_SECRET })
 
 const databaseId = config.DATABASE_ID_CORRECTIONS
-const bobardsFilePath = config.BOBARDS_FILE_PATH
 
 async function findElementInDatabase(text) {
   try {
@@ -59,10 +58,8 @@ function extractJsonIntoArray(filePath) {
   if (fs.existsSync(filePath)) {
       try {
           const data = fs.readFileSync(filePath, 'utf8');
-          console.log("File read successful");
 
           const jsonData = JSON.parse(data);
-          console.log("JSON parse successful");
           array = jsonData;
       } catch (err) {
           console.error(`Error occurred while reading or parsing JSON: ${err}`);
@@ -70,7 +67,6 @@ function extractJsonIntoArray(filePath) {
   } else {
       console.error(`Error: file not found at path: ${filePath}`)
   }
-  console.log(array);
   return array;
 }
 
@@ -81,6 +77,5 @@ module.exports = {
   isElementPresent: isElementPresent,
   getAllElementsInDatabase: getAllElementsInDatabase,
   mapPageNamesIntoArray: mapPageNamesIntoArray,
-  extractJsonIntoArray: extractJsonIntoArray,
-  bobardsFilePath: bobardsFilePath
+  extractJsonIntoArray: extractJsonIntoArray
 };

@@ -1,8 +1,13 @@
 const textManipulation = require('./textManipulation');
 const capitalization = require('./capitalization');
 const punctuation = require('./punctuation');
+const notiondb = require('./notionCorrectionsDb');
+var path = require('path');
+const config = require(path.join(__dirname, "../../conf"));
 
-const ADVERBES = [ "extrêmement", "réellement", "vraiment", "à priori", "a priori", "très" ];
+const bobardsFilePath = config.BOBARDS_FILE_PATH
+
+const BOBARDS = notiondb.extractJsonIntoArray(bobardsFilePath);
 
 function debobardize(text_with_bobards) {
   if (text_with_bobards === "") {
@@ -11,10 +16,10 @@ function debobardize(text_with_bobards) {
 
   let text_being_debobardized = text_with_bobards;
 
-  ADVERBES.forEach(function(i) {
+  BOBARDS.forEach(function(i) {
     i = i.toLowerCase();
-    text_being_debobardized = text_being_debobardized.toLowerCase();
-    if (text_being_debobardized.indexOf(i) !== -1) {
+    lowerText = text_being_debobardized.toLowerCase();
+    if (lowerText.indexOf(i) !== -1) {
       text_being_debobardized = textManipulation.removeElementFromText(text_being_debobardized, i);
     }
   });
