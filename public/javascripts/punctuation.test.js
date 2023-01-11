@@ -13,7 +13,7 @@ test('replaces any multiple space with single space', () => {
 });
 
 test('removes any starting character that isn’t an alphabetic character', () => {
-    const input = [".", ",  ", "-", ".     ", "Oui", "."];
+    const input = [".", ",  ", "-", ".     ", " ", "Oui", "."];
     const output = ["Oui", "."];
     expect(punctuation.fixLeadingPunctuation(input)).toStrictEqual(output);
 });
