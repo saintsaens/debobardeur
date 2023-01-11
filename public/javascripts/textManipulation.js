@@ -1,7 +1,13 @@
 function removeElementFromText(text, element) {
-    const textWithRemovedElement = text.replace(element, "");
+    const textWithRemovedElement = text.replace(new RegExp(element, "i"), "");
   
     return textWithRemovedElement;
+  }
+
+  function replaceElementFromText(text, oldElement, newElement) {
+    let textWithReplacedElement = text.replace(new RegExp(oldElement, "i"), newElement);
+  
+    return textWithReplacedElement;
   }
 
   function splitTextWithPunctuation(text) {
@@ -31,6 +37,7 @@ function removeElementFromText(text, element) {
 
   module.exports = {
     removeElementFromText: removeElementFromText,
+    replaceElementFromText: replaceElementFromText,
     splitTextWithPunctuation: splitTextWithPunctuation,
     reuniteTextWithPunctuation: reuniteTextWithPunctuation
 };

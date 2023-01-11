@@ -2,36 +2,51 @@ const textManipulation = require('./textManipulation');
 const capitalization = require('./capitalization');
 const punctuation = require('./punctuation');
 const notiondb = require('./notionCorrectionsDb');
+
 var path = require('path');
 const config = require(path.join(__dirname, "../../conf"));
 
-const bobardsFilePath = config.BOBARDS_FILE_PATH
+const BOBARDS = notiondb.extractJsonIntoArray(config.BOBARDS_FILE_PATH);
+const REMPLACEMENT = notiondb.extractJsonIntoArray(config.REMPLACEMENT_FILE_PATH);
 
-const BOBARDS = notiondb.extractJsonIntoArray(bobardsFilePath);
+function debobardize(textWithBobards) {
+  if (!textWithBobards) { return "" }
 
-function debobardize(text_with_bobards) {
-  if (text_with_bobards === "") {
-    return "";
-  }
+  let textWithRemovedElements = removeBobards(textWithBobards, BOBARDS);
+  let textWithReplacedElements = replaceBobards(textWithRemovedElements, REMPLACEMENT);
+  let textWithFixedPunctuation = punctuation.fixPunctuation(textWithReplacedElements);
+  let textWithoutBobards = capitalization.fixCapitalization(textWithFixedPunctuation);
 
-  let text_being_debobardized = text_with_bobards;
+  return textWithoutBobards;
+}
 
-  BOBARDS.forEach(function(i) {
-    i = i.toLowerCase();
-    lowerText = text_being_debobardized.toLowerCase();
-    if (lowerText.indexOf(i) !== -1) {
-      text_being_debobardized = textManipulation.removeElementFromText(text_being_debobardized, i);
+function removeBobards(text, bobards) {
+  let newText = text;
+  bobards.forEach(word => {
+    if (text.toLowerCase().includes(word.toLowerCase())) {
+      newText = textManipulation.removeElementFromText(text, word);
     }
   });
+  return newText;
+}
 
-  text_being_debobardized = punctuation.fixPunctuation(text_being_debobardized);
-  text_being_debobardized = capitalization.fixCapitalization(text_being_debobardized);
+function replaceBobards(text, remplacement) {
+  console.log(remplacement)
+  let newText = text;
+  let keys = Object.keys(remplacement);
+  let values = Object.values(remplacement);
 
-  const text_without_bobards = text_being_debobardized;
-
-  return text_without_bobards;
+  keys.forEach(key => {
+    if (text.toLowerCase().includes(key)) {
+      newText = textManipulation.replaceElementFromText(text, key, remplacement[key])
+    }
+  });
+  console.log(newText)
+  return newText;
 }
 
 module.exports = {
-  debobardize: debobardize
+  debobardize: debobardize,
+  removeBobards: removeBobards,
+  replaceBobards: replaceBobards
 };
