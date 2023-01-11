@@ -33,7 +33,7 @@ function fixCommas(arr) {
   
   function fixSpaceBeforeAndAfterPeriod(arr) {
     for (let i = 0; i < arr.length; i++) {
-        arr[i] = arr[i].replace(/ *\. */g, ". ");
+        arr[i] = arr[i].replace(/ *\. +/g, ". ");
       }
       return arr;
   }

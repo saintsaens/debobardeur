@@ -25,8 +25,14 @@ test('fixes space before the final period', () => {
 });
 
 test('fixes spaces before and after period', () => {
-    const input = ['   .     ', '.', ' , '];
-    const output = ['. ', '. ', ' , '];
+    const input = ['   .     ', ' , '];
+    const output = ['. ', ' , '];
+    expect(punctuation.fixSpaceBeforeAndAfterPeriod(input)).toStrictEqual(output);
+  });
+
+test('does not change spacing if period is a dot', () => {
+    const input = ['WordPress', '.', 'com'];
+    const output = ['WordPress', '.', 'com'];
     expect(punctuation.fixSpaceBeforeAndAfterPeriod(input)).toStrictEqual(output);
   });
 
