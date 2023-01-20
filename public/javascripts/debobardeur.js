@@ -10,14 +10,20 @@ const BOBARDS = notiondb.extractJsonIntoArray(config.BOBARDS_FILE_PATH);
 const REMPLACEMENT = notiondb.extractJsonIntoArray(config.REMPLACEMENT_FILE_PATH);
 
 function debobardize(textWithBobards) {
-  if (!textWithBobards) { return "" }
+  var lines = textWithBobards.split("\n");
 
-  let textWithRemovedElements = removeBobards(textWithBobards, BOBARDS);
-  let textWithReplacedElements = replaceBobards(textWithRemovedElements, REMPLACEMENT);
-  let textWithFixedPunctuation = punctuation.fixPunctuation(textWithReplacedElements);
-  let textWithoutBobards = capitalization.fixCapitalization(textWithFixedPunctuation);
+  for (let i = 0; i < lines.length; i++) {
+    if (!lines[i]) { return "" }
 
-  return textWithoutBobards;
+    let textWithRemovedElements = removeBobards(lines[i], BOBARDS);
+    let textWithReplacedElements = replaceBobards(textWithRemovedElements, REMPLACEMENT);
+    let textWithFixedPunctuation = punctuation.fixPunctuation(textWithReplacedElements);
+    lines[i] = capitalization.fixCapitalization(textWithFixedPunctuation);
+  }
+  
+  const reunitedText = lines.join("\n");
+
+  return reunitedText;
 }
 
 function removeBobards(text, bobards) {

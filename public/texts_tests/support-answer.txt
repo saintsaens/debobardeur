@@ -1,0 +1,7 @@
+à priori le thème Rowling est un thème à 2 colonnes + la colonne de droite . Voyez quand même dans votre Tableau de bord dans Apparence si l’option « Options du thème » existe .
+Sinon, vous désirez avoir un blog à 1 seule colonne + la colonne de droite il vous faut changer de thème en allant dans Apparence . La plupart des autres thèmes sont à 1 colonne + la colonne de doite .
+Dans Apparence -> Thèmes vous pouvez avoir un aperçu des différents thèmes avant d’en installer un .
+-----
+Le thème Rowling est un thème à 2 colonnes + la colonne de droite. Voyez quand même dans votre Tableau de bord dans Apparence si l’option « Options du thème » existe.
+Sinon, vous désirez avoir un blog à 1 seule colonne + la colonne de droite changez de thème en allant dans Apparence. La plupart des autres thèmes sont à 1 colonne + la colonne de doite.
+Dans Apparence → Thèmes vous pouvez avoir un aperçu des thèmes avant d’en installer un.
