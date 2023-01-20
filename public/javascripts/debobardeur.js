@@ -31,7 +31,6 @@ function removeBobards(text, bobards) {
 }
 
 function replaceBobards(text, remplacement) {
-  console.log(remplacement)
   let newText = text;
   let keys = Object.keys(remplacement);
   let values = Object.values(remplacement);
@@ -41,7 +40,6 @@ function replaceBobards(text, remplacement) {
       newText = textManipulation.replaceElementFromText(text, key, remplacement[key])
     }
   });
-  console.log(newText)
   return newText;
 }
 

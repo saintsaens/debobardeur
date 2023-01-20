@@ -16,16 +16,12 @@ router.post('/', (req, res) => {
   // Get the data from the request body
   var text = req.body.text_with_bobards;
 
-  var lines = text.split('\r\n');
+  debobardize.debobardize(text);
 
-  for (let i = 0; i < lines.length; i++) {
-    lines[i] = debobardize.debobardize(lines[i])
-  }
-  
-  const reunitedText = lines.join('\r\n');
+  var lines = text.split("\n");
 
   // Render the response using a Jade template
-  res.render('index', { text: reunitedText });
+  res.render('index', { text: text });
 })
 
 module.exports = router;
