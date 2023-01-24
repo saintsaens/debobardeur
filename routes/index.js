@@ -13,15 +13,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', (req, res) => {
-  // Get the data from the request body
-  var text = req.body.text_with_bobards;
+  const text = req.body.text_with_bobards;
 
-  debobardize.debobardize(text);
+  const newText = debobardize.debobardize(text);
 
-  var lines = text.split("\n");
-
-  // Render the response using a Jade template
-  res.render('index', { text: text });
+  res.render('index', { text: newText });
 })
 
 module.exports = router;
