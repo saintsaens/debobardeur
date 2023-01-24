@@ -14,7 +14,6 @@ function debobardize(textWithBobards) {
 
   for (let i = 0; i < lines.length; i++) {
     if (lines[i] != "") {
-      console.log("lines[i]: " + lines[i]);
       let textWithRemovedElements = removeBobards(lines[i], BOBARDS);
       let textWithReplacedElements = replaceBobards(textWithRemovedElements, REMPLACEMENT);
       let textWithFixedPunctuation = punctuation.fixPunctuation(textWithReplacedElements);

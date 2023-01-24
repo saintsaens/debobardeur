@@ -8,7 +8,5 @@ test('debobardizes txt files', () => {
   const test = data.split("-----").map((element) => element.trim());
   const input = test[0];
   const output = test[1];
-  console.log("debobd: ", debobardize.debobardize(test[0]));
-  console.log("output: ", test[1]);
   expect(debobardize.debobardize(input)).toStrictEqual(output);
 });
