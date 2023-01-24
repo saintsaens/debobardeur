@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  line-height: 1.8;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -11,6 +12,10 @@ body {
 button, input, textarea {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: hsl(0deg, 0%, 100%);
+}
+
+textarea {
+  line-height: 1.8;
 }
 
 a {
