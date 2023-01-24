@@ -33,3 +33,9 @@ test('debobardizes "Un moyen est d’utiliser" into "Vous pouvez utiliser"', () 
   const output = "Vous pouvez utiliser"
   expect(debobardize.debobardize(input)).toBe(output);
 });
+
+test('debobardizes several lines', () => {
+  const input = "lorem\n\nipsum"
+  const output = "Lorem\n\nIpsum"
+  expect(debobardize.debobardize(input)).toBe(output);
+});

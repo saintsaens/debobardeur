@@ -25,9 +25,11 @@ function fixCommas(arr) {
   }
 
   function removeSpacesAfterFinalPeriod(arr) {
-    if (arr[arr.length - 1].includes('.')) {
-      arr[arr.length - 1] = arr[arr.length - 1].trim();
-    }
+    if (arr.length > 0) {
+      if (arr[arr.length - 1].includes('.')) {
+        arr[arr.length - 1] = arr[arr.length - 1].trim();
+      }
+    }    
     return arr;
   }  
   
