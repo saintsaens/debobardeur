@@ -5,7 +5,7 @@ function removeElementFromText(text, element) {
   }
 
   function replaceElementFromText(text, oldElement, newElement) {
-    let textWithReplacedElement = text.replace(new RegExp(oldElement, "i"), newElement);
+    let textWithReplacedElement = text.replace(new RegExp(oldElement, "gi"), newElement);
   
     return textWithReplacedElement;
   }
