@@ -29,7 +29,7 @@ textarea {
 }
 
 a {
-  color: #00B7FF;
+  color: hsl(20deg, 10%, 40%);
 }
 
 .preview, .input {
