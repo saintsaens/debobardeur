@@ -9,11 +9,13 @@ block content
       id="text_with_bobards_id"
       name="text_with_bobards"
       autofocus
+      placeholder="Entrez votre texte."
     )
     br
     br
     input(type="submit" value="Débobardiser (⌘+↵)" id="submit_button" class="button-4" role="button")
-    p.preview #{text}
+    if text
+      p.preview #{text}
   script.
     const textarea = document.querySelector("#text_with_bobards_id");
     textarea.addEventListener('keydown', (event) => {
