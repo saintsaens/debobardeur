@@ -39,7 +39,6 @@ function removeBobards(text, bobards) {
 function replaceBobards(text, remplacement) {
   let newText = text;
   let keys = Object.keys(remplacement);
-  let values = Object.values(remplacement);
 
   keys.forEach(key => {
     if (text.toLowerCase().includes(key)) {
