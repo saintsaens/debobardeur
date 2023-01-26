@@ -7,13 +7,17 @@ const config = require(path.join(__dirname, "../../conf"));
 const supabase = createClient(config.SUPABASE_URL, config.SUPABASE_KEY);
 
 async function addEntry(input) {
-  const { data, error } = await supabase
-    .from(config.SUPABASE_TABLE_TEXT_COLUMN)
-    .insert([
-      { Text: input },
-    ])
-    return true;
+  try {
+    const { data, error } = await supabase
+      .from(config.SUPABASE_TABLE_TEXT_COLUMN)
+      .insert([
+        { Text: input },
+      ])
+  } catch (err) {
+    console.error(err);
+  }
 }
+
 
 module.exports = {
   addEntry: addEntry
