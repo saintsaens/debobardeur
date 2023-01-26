@@ -21,9 +21,5 @@ bin/
 # Conf files
 conf.js
 
-# DB files
-bobards.json
-remplacement.json
-
 # Generated test files
 public/texts_tests/*.txt
