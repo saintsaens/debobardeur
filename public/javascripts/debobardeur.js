@@ -1,7 +1,7 @@
 const textManipulation = require('./textManipulation');
 const capitalization = require('./capitalization');
 const punctuation = require('./punctuation');
-const notiondb = require('./notionCorrectionsDb');
+const notiondb = require('./notion');
 
 var path = require('path');
 const config = require(path.join(__dirname, "../../conf"));
