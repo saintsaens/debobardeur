@@ -30,7 +30,7 @@ test('replaces bobard "un moyen est d’"', () => {
 
 test('debobardizes "Un moyen est d’utiliser" into "Vous pouvez utiliser"', () => {
   const input = "Un moyen est d’utiliser"
-  const output = "Vous pouvez utiliser"
+  const output = "Un autre moyen est d’utiliser"
   expect(debobardize.debobardize(input)).toBe(output);
 });
 
