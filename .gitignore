@@ -18,8 +18,5 @@ Thumbs.db
 # Binary files
 bin/
 
-# Conf files
-conf.js
-
 # Generated test files
 public/integrationTests/*.txt
