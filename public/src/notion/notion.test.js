@@ -1,16 +1,16 @@
-const notion = require('./notion');
-const fs = require('fs');
+import { extractJsonIntoArray, getPageId, getPageTitle, getInputTextBlocks, getOutputTextBlocks, getTextFromParagraphBlocks, createFileName } from '../notion';
+import { writeFileSync, existsSync, unlinkSync } from 'fs';
 
-var path = require('path');
-const config = require(path.join(__dirname, "../../conf"));
+import { join } from 'path';
+// const config = require(join(__dirname, "../../../conf"));
 
 test('checks JSON file is correctly read and parsed', () => {
   const output = ["très", "vraiment"];
   const filepath = './testFile.json';
 
-  fs.writeFileSync(filepath, JSON.stringify(output));
-  expect(fs.existsSync(filepath)).toBe(true);
-  expect(notion.extractJsonIntoArray(filepath)).toStrictEqual(output);
+  writeFileSync(filepath, JSON.stringify(output));
+  expect(existsSync(filepath)).toBe(true);
+  expect(extractJsonIntoArray(filepath)).toStrictEqual(output);
 });
 
 test('gets page ID', () => {
@@ -20,8 +20,8 @@ test('gets page ID', () => {
     id: '2b5ee720-5ac8-4601-a101-3d7b5c8f2151'
   };
 
-  expect(notion.getPageId(page)).toBe(rightPageId);
-  expect(notion.getPageId(page)).not.toBe(wrongPageId);
+  expect(getPageId(page)).toBe(rightPageId);
+  expect(getPageId(page)).not.toBe(wrongPageId);
 });
 
 test('gets page title', () => {
@@ -39,8 +39,8 @@ test('gets page title', () => {
     }
   };
 
-  expect(notion.getPageTitle(page)).toBe(rightPageTitle);
-  expect(notion.getPageTitle(page)).not.toBe(wrongPageTitle);
+  expect(getPageTitle(page)).toBe(rightPageTitle);
+  expect(getPageTitle(page)).not.toBe(wrongPageTitle);
 });
 
 test('gets blocks of input text in list of blocks', () => {
@@ -76,7 +76,7 @@ test('gets blocks of input text in list of blocks', () => {
     }
   ];
 
-  expect(notion.getInputTextBlocks(blocks)).toStrictEqual(blocksInput);
+  expect(getInputTextBlocks(blocks)).toStrictEqual(blocksInput);
 });
 
 test('gets blocks of output text in list of blocks', () => {
@@ -112,7 +112,7 @@ test('gets blocks of output text in list of blocks', () => {
     }
   ];
 
-  expect(notion.getOutputTextBlocks(blocks)).toStrictEqual(blocksOutput);
+  expect(getOutputTextBlocks(blocks)).toStrictEqual(blocksOutput);
 });
 
 test('gets text from list of blocks', () => {
@@ -152,19 +152,19 @@ test('gets text from list of blocks', () => {
     "Sonner les vérités comme des éperons."
   ]
 
-  expect(notion.getTextFromParagraphBlocks(paragraphBlocks)).toStrictEqual(textArray);
+  expect(getTextFromParagraphBlocks(paragraphBlocks)).toStrictEqual(textArray);
 });
 
 test('constructs file name', () => {
   const testTitle = "1";
-  const output = config.TEXT_TEST_FILE_BASE_TITLE + testTitle + config.TEXT_TEST_FILE_EXTENSION;
+  const output = process.env.TEXT_TEST_FILE_BASE_TITLE + testTitle + process.env.TEXT_TEST_FILE_EXTENSION;
 
-  expect(notion.createFileName(testTitle)).toBe(output);
+  expect(createFileName(testTitle)).toBe(output);
 });
 
 afterEach(() => {
   const filepath = './testFile.json';
-  if (fs.existsSync(filepath)) {
-    fs.unlinkSync(filepath);
+  if (existsSync(filepath)) {
+    unlinkSync(filepath);
   }
 });

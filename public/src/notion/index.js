@@ -1,21 +1,22 @@
-const { Client } = require('@notionhq/client');
+import { Client } from '@notionhq/client';
 
-var path = require('path');
-const config = require(path.join(__dirname, "../../conf"));
+import { join } from 'path';
+// const config = require(join(__dirname, "../../conf"));
+// require('dotenv').config();
 
-const fs = require('fs');
+import { readdir, unlink, writeFileSync, existsSync, readFileSync } from 'fs';
 
-const notion = new Client({ auth: config.NOTION_CLIENT_SECRET });
-const bobardsDatabaseId = config.NOTION_DATABASE_ID_BOBARDS;
-const textsTestsDatabaseId = config.NOTION_DATABASE_ID_TEXTS_TESTS;
+const notion = new Client({ auth: process.env.NOTION_CLIENT_SECRET });
+const bobardsDatabaseId = process.env.NOTION_DATABASE_ID_BOBARDS;
+const textsTestsDatabaseId = process.env.NOTION_DATABASE_ID_TEXTS_TESTS;
 
-function createFileName(testTitle) {
-  const fileName = config.TEXT_TEST_FILE_BASE_TITLE + testTitle + config.TEXT_TEST_FILE_EXTENSION;
+export function createFileName(testTitle) {
+  const fileName = process.env.TEXT_TEST_FILE_BASE_TITLE + testTitle + process.env.TEXT_TEST_FILE_EXTENSION;
 
   return fileName;
 }
 
-async function getTexts() {
+export async function getTexts() {
   const pages = await getAllPagesInDatabase(textsTestsDatabaseId);
   for (let i = 0; i < pages.results.length; i++) {
     const page = pages.results[i];
@@ -31,14 +32,14 @@ async function getTexts() {
   }
 }
 
-function removeOldTestFiles() {
-  const directory = path.join(__dirname, "../texts_tests/");
-  fs.readdir(directory, (err, files) => {
+export function removeOldTestFiles() {
+  const directory = join(__dirname, "../texts_tests/");
+  readdir(directory, (err, files) => {
     if (err) throw err;
 
     for (const file of files) {
       if (file.endsWith('.txt')) {
-        fs.unlink(`${directory}/${file}`, err => {
+        unlink(`${directory}/${file}`, err => {
           if (err) throw err;
         });
       }
@@ -46,19 +47,19 @@ function removeOldTestFiles() {
   });
 }
 
-function writeTestIntoFile(testTitle, testInputText, testOutputText) {
+export function writeTestIntoFile(testTitle, testInputText, testOutputText) {
   const fileTitle = createFileName(testTitle);
   const array = [];
   array.push(testInputText.join("\n"));
   array.push("-----");
   array.push(testOutputText.join("\n"));
   const arrayAsString = array.join("\n")
-  fs.writeFileSync(path.join(__dirname, "../texts_tests/", fileTitle), arrayAsString, { flag: 'w' });
+  writeFileSync(join(__dirname, "../texts_tests/", fileTitle), arrayAsString, { flag: 'w' });
 
   return true;
 }
 
-function getInputTextBlocks(blocks) {
+export function getInputTextBlocks(blocks) {
   const array = []
   for (let i = 0; i < blocks.results.length; i++) {
     if (blocks.results[i].type == "divider") {
@@ -72,7 +73,7 @@ function getInputTextBlocks(blocks) {
   return array;
 }
 
-function getTextFromParagraphBlocks(paragraphBlocks) {
+export function getTextFromParagraphBlocks(paragraphBlocks) {
   const array = []
   for (let i = 0; i < paragraphBlocks.length; i++) {
     array.push(paragraphBlocks[i].paragraph.rich_text[0].plain_text);
@@ -80,7 +81,7 @@ function getTextFromParagraphBlocks(paragraphBlocks) {
   return array;
 }
 
-function getOutputTextBlocks(blocks) {
+export function getOutputTextBlocks(blocks) {
   const array = [];
   let afterDivider = false;
   for (let i = 0; i < blocks.results.length; i++) {
@@ -96,26 +97,26 @@ function getOutputTextBlocks(blocks) {
   return array;
 }
 
-async function getAllBlocksInPage(pageId) {
+export async function getAllBlocksInPage(pageId) {
   const pageBlocks = await notion.blocks.children.list({
     block_id: pageId,
   });
   return pageBlocks;
 }
 
-function getPageTitle(pageObject) {
+export function getPageTitle(pageObject) {
   const pageTitle = pageObject.properties.Titre.title[0].plain_text;
 
   return pageTitle;
 }
 
-function getPageId(pageObject) {
+export function getPageId(pageObject) {
   const pageId = pageObject.id;
 
   return pageId;
 }
 
-async function getAllPagesInDatabase(notionDatabaseId) {
+export async function getAllPagesInDatabase(notionDatabaseId) {
   try {
     const response = await notion.databases.query({
       database_id: notionDatabaseId,
@@ -128,11 +129,11 @@ async function getAllPagesInDatabase(notionDatabaseId) {
   }
 }
 
-function extractJsonIntoArray(filePath) {
+export function extractJsonIntoArray(filePath) {
   let array = [];
-  if (fs.existsSync(filePath)) {
+  if (existsSync(filePath)) {
     try {
-      const data = fs.readFileSync(filePath, 'utf8');
+      const data = readFileSync(filePath, 'utf8');
 
       const jsonData = JSON.parse(data);
       array = jsonData;
@@ -144,20 +145,3 @@ function extractJsonIntoArray(filePath) {
   }
   return array;
 }
-
-
-
-module.exports = {
-  getAllPagesInDatabase: getAllPagesInDatabase,
-  extractJsonIntoArray: extractJsonIntoArray,
-  getPageId: getPageId,
-  getPageTitle: getPageTitle,
-  getInputTextBlocks: getInputTextBlocks,
-  getOutputTextBlocks: getOutputTextBlocks,
-  getTextFromParagraphBlocks: getTextFromParagraphBlocks,
-  createFileName: createFileName,
-  writeTestIntoFile: writeTestIntoFile,
-  getTexts: getTexts,
-  getAllBlocksInPage: getAllBlocksInPage,
-  removeOldTestFiles: removeOldTestFiles
-};
