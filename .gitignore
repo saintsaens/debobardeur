@@ -22,4 +22,4 @@ bin/
 conf.js
 
 # Generated test files
-public/texts_tests/*.txt
+public/integrationTests/*.txt
