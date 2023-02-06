@@ -1,11 +1,15 @@
 import { Client } from '@notionhq/client';
 
-import { join } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 import { readdir, unlink, writeFileSync, existsSync, readFileSync } from 'fs';
 
-const notion = new Client({ auth: process.env.NOTION_CLIENT_SECRET });
-const bobardsDatabaseId = process.env.NOTION_DATABASE_ID_BOBARDS;
+const notion = new Client({ auth: process.env.NOTION_KEY });
 const textsTestsDatabaseId = process.env.NOTION_DATABASE_ID_TEXTS_TESTS;
 
 export function createFileName(testTitle) {
@@ -31,7 +35,7 @@ export async function getTexts() {
 }
 
 export function removeOldTestFiles() {
-  const directory = join(__dirname, "../integrationTests/");
+  const directory = join(__dirname, "../../integrationTests/");
   readdir(directory, (err, files) => {
     if (err) throw err;
 
@@ -52,7 +56,7 @@ export function writeTestIntoFile(testTitle, testInputText, testOutputText) {
   array.push("-----");
   array.push(testOutputText.join("\n"));
   const arrayAsString = array.join("\n")
-  writeFileSync(join(__dirname, "../integrationTests/", fileTitle), arrayAsString, { flag: 'w' });
+  writeFileSync(join(__dirname, "../../integrationTests/", fileTitle), arrayAsString, { flag: 'w' });
 
   return true;
 }

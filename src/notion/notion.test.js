@@ -2,9 +2,9 @@ import { extractJsonIntoArray, getPageId, getPageTitle, getInputTextBlocks, getO
 import { writeFileSync, existsSync, unlinkSync } from 'fs';
 
 import { join } from 'path';
-// const config = require(join(__dirname, "../../../conf"));
 
 test('checks JSON file is correctly read and parsed', () => {
+  console.log(process.env.NOTION_KEY);
   const output = ["très", "vraiment"];
   const filepath = './testFile.json';
 

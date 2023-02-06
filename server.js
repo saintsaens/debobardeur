@@ -5,6 +5,9 @@ const port = 3000
 
 app.use(express.json());
 
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 app.post("/", (req, res) => {
   const message = req.body.message
 

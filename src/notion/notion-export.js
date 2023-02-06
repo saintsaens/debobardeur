@@ -1,4 +1,4 @@
-import { removeOldTestFiles, getTexts } from '../notion';
+import { removeOldTestFiles, getTexts } from './index.js';
 
 removeOldTestFiles();
 getTexts();
