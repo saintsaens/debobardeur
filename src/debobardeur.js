@@ -1,14 +1,17 @@
-import { removeElementFromText, replaceElementFromText } from './textManipulation';
-import { fixCapitalization } from './capitalization';
-import { fixPunctuation } from './punctuation';
-import { extractJsonIntoArray } from './notion';
+import { removeElementFromText, replaceElementFromText } from './textManipulation.js';
+import { fixCapitalization } from './capitalization.js';
+import { fixPunctuation } from './punctuation.js';
+import { extractJsonIntoArray } from './notion/index.js';
 
-import { join } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 import * as dotenv from 'dotenv';
 dotenv.config();
 
 function createFilePath(fileName) {
-  const filePath = join(__dirname, "../../", fileName);
+  const filePath = join(__dirname, "../bobards/", fileName);
   return filePath;
 }
 

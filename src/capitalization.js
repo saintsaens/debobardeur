@@ -1,4 +1,4 @@
-import { splitTextWithPunctuation, reuniteTextWithPunctuation } from './textManipulation';
+import { splitTextWithPunctuation, reuniteTextWithPunctuation } from './textManipulation.js';
 
 export function capitalizeString(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);

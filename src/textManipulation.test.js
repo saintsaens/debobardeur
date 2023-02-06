@@ -1,4 +1,4 @@
-import { removeElementFromText, replaceElementFromText, splitTextWithPunctuation, reuniteTextWithPunctuation } from './textManipulation';
+import { removeElementFromText, replaceElementFromText, splitTextWithPunctuation, reuniteTextWithPunctuation } from './textManipulation.js';
 
 test('removes stuff from "Lorem ipsum dolor"', () => {
   const input = "Lorem ipsum dolor"

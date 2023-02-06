@@ -1,4 +1,4 @@
-import { capitalizeString, capitalizeElementAfterPeriod, fixCapitalization } from './capitalization';
+import { capitalizeString, capitalizeElementAfterPeriod, fixCapitalization } from './capitalization.js';
 
 test('capitalizes "oui" into "Oui"', () => {
   const inputText = "oui"

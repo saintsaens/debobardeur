@@ -1,8 +1,6 @@
 import { Client } from '@notionhq/client';
 
 import { join } from 'path';
-// const config = require(join(__dirname, "../../conf"));
-// require('dotenv').config();
 
 import { readdir, unlink, writeFileSync, existsSync, readFileSync } from 'fs';
 
@@ -33,7 +31,7 @@ export async function getTexts() {
 }
 
 export function removeOldTestFiles() {
-  const directory = join(__dirname, "../texts_tests/");
+  const directory = join(__dirname, "../integrationTests/");
   readdir(directory, (err, files) => {
     if (err) throw err;
 
@@ -54,7 +52,7 @@ export function writeTestIntoFile(testTitle, testInputText, testOutputText) {
   array.push("-----");
   array.push(testOutputText.join("\n"));
   const arrayAsString = array.join("\n")
-  writeFileSync(join(__dirname, "../texts_tests/", fileTitle), arrayAsString, { flag: 'w' });
+  writeFileSync(join(__dirname, "../integrationTests/", fileTitle), arrayAsString, { flag: 'w' });
 
   return true;
 }

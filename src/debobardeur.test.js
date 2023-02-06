@@ -1,4 +1,4 @@
-import { debobardize as _debobardize, removeBobards, replaceBobards } from './debobardeur';
+import { debobardize as _debobardize, removeBobards, replaceBobards } from './debobardeur.js';
 
 test('debobardizes "Je suis vraiment content" into "Je suis content"', () => {
   const input = "Je suis vraiment content"

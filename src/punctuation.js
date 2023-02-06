@@ -1,4 +1,4 @@
-import { splitTextWithPunctuation, reuniteTextWithPunctuation } from './textManipulation';
+import { splitTextWithPunctuation, reuniteTextWithPunctuation } from './textManipulation.js';
 
 export function fixCommas(arr) {
   // Replace all variations of comma punctuation with comma+space.
