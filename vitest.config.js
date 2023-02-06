@@ -1,5 +1,5 @@
 export default {
-    test: {
-        globals: true
-    }
+  test: {
+      globals: true
+  }
 };
