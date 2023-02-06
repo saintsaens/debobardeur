@@ -9,4 +9,7 @@ node_modules/
 Thumbs.db
 
 # Generated test files
-public/integrationTests/*.txt
+integrationTests/*.txt
+
+# Bobards and replacements
+bobards/*.json
