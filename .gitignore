@@ -1,22 +1,12 @@
-# Logs
-logs
-*.log
-
 # Dependency directories
 node_modules/
 
 # Local env files
 .env
 
-# Backup files
-*.bak
-
 # System files
 .DS_Store
 Thumbs.db
-
-# Binary files
-bin/
 
 # Generated test files
 public/integrationTests/*.txt
