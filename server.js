@@ -8,6 +8,10 @@ app.use(express.json());
 import * as dotenv from 'dotenv'
 dotenv.config()
 
+app.get("/", (req, res) => {
+  res.json("GET request received!")
+});
+
 app.post("/", (req, res) => {
   const message = req.body.message
 
