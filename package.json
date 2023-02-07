@@ -8,18 +8,20 @@
   "scripts": {
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "start": "node server.js",
-    "export:notion": "node ./src/notion/notion-export.js"
+    "start": "nodemon server.js",
+    "export:tests": "node ./src/notion/notion-export.js"
   },
   "dependencies": {
     "@notionhq/client": "^1.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@vitest/ui": "^0.28.4",
-    "vitest": "^0.28.4"
+    "vitest": "^0.28.4",
+    "nodemon": "^2.0.20"
   },
   "repository": {
     "type": "git",
