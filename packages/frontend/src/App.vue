@@ -11,6 +11,10 @@ async function handleKeyDown(event: KeyboardEvent) {
     event.preventDefault();
     await updateResponse();
   }
+  else if ((event.metaKey || event.ctrlKey) && event.key === 'c') {
+    event.preventDefault();
+    await copyResponse();
+  }
 };
 
 async function updateResponse() {
@@ -44,8 +48,6 @@ async function copyResponse() {
       </span>
     </p>
     <p v-if="copySuccess">Response copied to clipboard</p>
-
-
   </div>
 </template>
 
