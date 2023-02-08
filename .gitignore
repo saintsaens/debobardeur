@@ -7,9 +7,3 @@ node_modules/
 # System files
 .DS_Store
 Thumbs.db
-
-# Generated test files
-integrationTests/*.txt
-
-# Bobards and replacements
-bobards/*.json
