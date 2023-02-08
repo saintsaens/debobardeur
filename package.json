@@ -8,7 +8,8 @@
   "scripts": {
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "start": "nodemon server.js",
+    "dev": "nodemon server.js",
+    "start": "node server.js",
     "export:tests": "node ./src/notion/notion-export.js"
   },
   "dependencies": {
