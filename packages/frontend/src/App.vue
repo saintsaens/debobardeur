@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, TextareaHTMLAttributes } from 'vue';
+import { ref } from 'vue';
 import { postData } from './main';
 
 const text = ref('');
