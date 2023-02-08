@@ -1,0 +1,82 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  line-height: 1.8;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: hsl(20deg, 10%, 15%);
+  color: hsl(0deg, 0%, 100%);
+}
+
+footer {
+  font: 11px "Lucida Grande", Helvetica, Arial, sans-serif;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+button, input, textarea {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: hsl(0deg, 0%, 100%);
+}
+
+textarea {
+  line-height: 1.8;
+}
+
+a {
+  color: hsl(20deg, 10%, 40%);
+}
+
+.preview, .input {
+  border-radius: 8px;
+  padding: 16px;
+  width: 100%;
+  background-color: hsl(20deg, 10%, 20%);
+}
+
+.input {
+  border: 2px solid hsl(20deg, 10%, 40%);
+}
+
+.input:focus {
+  outline: 0;
+}
+
+.preview {
+  white-space: pre-line;
+}
+
+.button-4 {
+  appearance: none;
+  background-color: hsl(20deg, 10%, 20%);
+  border: 2px solid hsl(20deg, 10%, 40%);
+  border-radius: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button-4:hover {
+  background-color: hsl(20deg, 10%, 25%);
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
