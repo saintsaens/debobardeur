@@ -1,4 +1,10 @@
 {
+  "name": "debobardeur",
+  "version": "1.0.0",
   "private": true,
   "description": "Remove bullshit.",
+  "author": "Flavien",
   "scripts": {
+    "dev": "pnpm --recursive --parallel run dev"
+  }
+}
