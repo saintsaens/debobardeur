@@ -1,18 +1,23 @@
 import { createClient } from '@supabase/supabase-js';
 
-import { join } from 'path';
-const config = require(join(__dirname, "../../conf"));
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-// Create a single supabase client for interacting with your database
-const supabase = createClient(config.SUPABASE_URL, config.SUPABASE_KEY);
 
-export async function addEntry(input) {
+export function connectToSupabase(url, key) {
+  const supabase = createClient(url, key);
+  
+  return supabase;
+}
+
+export async function addEntry(supabase, input) {
   try {
+    console.log(supabase);
     const { data, error } = await supabase
-      .from(config.SUPABASE_TABLE_TEXT_COLUMN)
-      .insert([
-        { Text: input },
-      ])
+    .from(process.env.SUPABASE_TABLE_TEXT_COLUMN)
+    .insert([
+      { Text: input },
+    ])
   } catch (err) {
     console.error(err);
   }
