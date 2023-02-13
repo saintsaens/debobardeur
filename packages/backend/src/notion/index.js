@@ -1,9 +1,11 @@
 import { Client } from '@notionhq/client';
 
+// Create the __dirname variable in ES6.
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+// Configure dotenv to use process.env for environment variables.
 import * as dotenv from 'dotenv'
 dotenv.config()
 
@@ -25,13 +27,18 @@ export async function getTexts() {
     const pageTitle = getPageTitle(page);
     const pageId = getPageId(page);
     const pageBlocks = await getAllBlocksInPage(pageId);
-    const inputTextBlocks = getInputTextBlocks(pageBlocks);
-    const inputText = getTextFromParagraphBlocks(inputTextBlocks);
+    const inputText = getInputText(pageBlocks);
     const outputTextBlocks = getOutputTextBlocks(pageBlocks);
     const outputText = getTextFromParagraphBlocks(outputTextBlocks);
 
     writeTestIntoFile(pageTitle, inputText, outputText);
   }
+}
+
+export function getInputText(pageBlocks) {
+  const inputTextBlocks = getInputTextBlocks(pageBlocks);
+  const inputText = getTextFromParagraphBlocks(inputTextBlocks);
+  return inputText;
 }
 
 export function removeOldTestFiles() {
