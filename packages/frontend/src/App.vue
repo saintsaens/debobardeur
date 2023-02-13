@@ -47,7 +47,7 @@ async function copyResponse() {
         content_copy
       </span>
     </p>
-    <p v-if="copySuccess">Response copied to clipboard</p>
+    <p v-if="copySuccess">Copié dans le presse-papiers !</p>
   </div>
 </template>
 
