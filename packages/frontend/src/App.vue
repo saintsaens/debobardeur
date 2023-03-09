@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { postData } from './main';
+import { postData } from './api';
 
 const text = ref('');
 const response = ref('');
