@@ -12,11 +12,11 @@ app.use(express.json());
 
 dotenv.config()
 
-app.get("/", (req, res) => {
+app.get("/api/", (req, res) => {
   res.json("GET request received!")
 });
 
-app.post("/", (req, res) => {
+app.post("/api/", (req, res) => {
   const message = req.body.message
   const newText = debobardize(message)
   res.send(newText);
