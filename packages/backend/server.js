@@ -9,15 +9,15 @@ const port = 3000
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static("../frontend/dist"))
+// app.use(express.static("../frontend/dist"))
 
 dotenv.config()
 
-app.get("/api/", (req, res) => {
+app.get("/", (req, res) => {
   res.json("GET request received!")
 });
 
-app.post("/api/", (req, res) => {
+app.post("/", (req, res) => {
   const message = req.body.message
   const newText = debobardize(message)
   res.send(newText);
@@ -32,5 +32,4 @@ app.listen(port, () => {
   console.log(`Server listening on port ${port}`)
 })
 
-// 
 export default app;
