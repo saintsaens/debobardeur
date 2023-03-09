@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = import.meta.env.BACKEND_URL + "/api";
+const url = import.meta.env.VITE_BACKEND_URL;
 
 export async function postData(text: string) {
   try {
