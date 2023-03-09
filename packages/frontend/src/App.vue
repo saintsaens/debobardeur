@@ -42,29 +42,64 @@ async function copyResponse() {
     <div class="button-wrapper">
       <input type="submit" value="Débobardiser (⌘+↵)" class="button-4" role="button" @click="updateResponse">
     </div>
-    <p v-if="response" class="preview">{{ response }}
-      <span class="material-symbols-outlined" style="float: right; cursor: pointer;" @click="copyResponse">
+    <div v-if="response" class="response-wrapper">
+      <p :class="{ 'preview': true, 'blink': copySuccess }">
+        {{ response }}
+      </p>
+
+      <span class="material-symbols-outlined copy-icon" @click="copyResponse">
         content_copy
       </span>
-    </p>
+    </div>
     <p v-if="copySuccess">Copié dans le presse-papiers !</p>
   </div>
 </template>
 
 <style scoped lang="scss">
+
 .wrapper {
   display: flex;
   gap: 16px;
   flex-direction: column;
   width: 800px;
+  
+  .response-wrapper {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    .copy-icon {
+      cursor: pointer;
+      flex-grow: 0;
+      flex-shrink: 0;
+      background: var(--color-background-light);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      color: var(--color-content-soft);
+      &:hover{
+        color: var(--color-content);
+      }
+    }
+  }
 
   .input {
     height: 200px;
+    box-sizing: border-box;
   }
 
   .preview {
     margin: 0;
+    flex-grow: 1;
   }
+
+  .blink {
+    background: white;
+    animation: blink 0.01s;
+  }
+
 
   .material-symbols-outlined {
     font-variation-settings:

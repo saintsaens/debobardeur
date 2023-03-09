@@ -1,3 +1,12 @@
+:root { 
+  --color-background: hsl(20deg, 10%, 15%);
+  --color-background-light: hsl(20deg, 10%, 20%);
+  --color-background-lighter: hsl(20deg, 10%, 40%);
+
+  --color-content: hsl(0deg, 0%, 100%);
+  --color-content-soft: hsla(0deg, 0%, 100%, 50%);
+ }
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -5,8 +14,8 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: hsl(20deg, 10%, 15%);
-  color: hsl(0deg, 0%, 100%);
+  background-color: var(--color-background);
+  color: var(--color-content);
 }
 
 footer {
@@ -36,11 +45,11 @@ a {
   border-radius: 8px;
   padding: 16px;
   width: 100%;
-  background-color: hsl(20deg, 10%, 20%);
+  background-color: var(--color-background-light);
 }
 
 .input {
-  border: 2px solid hsl(20deg, 10%, 40%);
+  border: 2px solid var(--color-background-lighter);
 }
 
 .input:focus {
