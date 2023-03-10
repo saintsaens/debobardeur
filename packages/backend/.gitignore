@@ -1,5 +1,2 @@
 # Generated test files
 integrationTests/*.txt
-
-# Bobards and replacements
-bobards/*.json
