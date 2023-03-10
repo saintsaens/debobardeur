@@ -1,4 +1,4 @@
-import notion from ".";
+import notion from "./index.js";
 
 export async function getAllPagesInDatabase(notionDatabaseId) {
   try {

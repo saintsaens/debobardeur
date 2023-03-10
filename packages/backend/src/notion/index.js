@@ -1,7 +1,7 @@
 import { Client } from '@notionhq/client';
-import { getAllPagesInDatabase } from './notion-db';
-import { getAllBlocksInPage, getPageId, getPageTitle } from './notion-page';
-import { getInputText, getOutputTextBlocks, getTextFromParagraphBlocks } from './notion-block';
+import { getAllPagesInDatabase } from './notion-db.js';
+import { getAllBlocksInPage, getPageId, getPageTitle } from './notion-page.js';
+import { getInputText, getOutputTextBlocks, getTextFromParagraphBlocks } from './notion-block.js';
 
 // Create the __dirname variable in ES6.
 import { dirname, join } from 'path';
