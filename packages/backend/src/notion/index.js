@@ -1,4 +1,7 @@
 import { Client } from '@notionhq/client';
+import { getAllPagesInDatabase } from './notion-db';
+import { getAllBlocksInPage, getPageId, getPageTitle } from './notion-page';
+import { getInputText, getOutputTextBlocks, getTextFromParagraphBlocks } from './notion-block';
 
 // Create the __dirname variable in ES6.
 import { dirname, join } from 'path';
@@ -12,6 +15,7 @@ dotenv.config()
 import { readdir, unlink, writeFileSync, existsSync, readFileSync } from 'fs';
 
 const notion = new Client({ auth: process.env.NOTION_KEY });
+
 const textsTestsDatabaseId = process.env.NOTION_DATABASE_ID_TEXTS_TESTS;
 
 export function createFileName(testTitle) {
@@ -33,12 +37,6 @@ export async function getTexts() {
 
     writeTestIntoFile(pageTitle, inputText, outputText);
   }
-}
-
-export function getInputText(pageBlocks) {
-  const inputTextBlocks = getInputTextBlocks(pageBlocks);
-  const inputText = getTextFromParagraphBlocks(inputTextBlocks);
-  return inputText;
 }
 
 export function removeOldTestFiles() {
@@ -68,76 +66,6 @@ export function writeTestIntoFile(testTitle, testInputText, testOutputText) {
   return true;
 }
 
-export function getInputTextBlocks(blocks) {
-  const array = []
-  for (let i = 0; i < blocks.results.length; i++) {
-    if (blocks.results[i].type == "divider") {
-      return array;
-    }
-
-    else if (blocks.results[i].type == "paragraph") {
-      array.push(blocks.results[i]);
-    }
-  }
-  return array;
-}
-
-export function getTextFromParagraphBlocks(paragraphBlocks) {
-  const array = []
-  for (let i = 0; i < paragraphBlocks.length; i++) {
-    array.push(paragraphBlocks[i].paragraph.rich_text[0].plain_text);
-  }
-  return array;
-}
-
-export function getOutputTextBlocks(blocks) {
-  const array = [];
-  let afterDivider = false;
-  for (let i = 0; i < blocks.results.length; i++) {
-    if (blocks.results[i].type == "divider") {
-      afterDivider = true;
-    }
-    else if (afterDivider == true) {
-      if (blocks.results[i].type == "paragraph") {
-        array.push(blocks.results[i]);
-      }
-    }
-  }
-  return array;
-}
-
-export async function getAllBlocksInPage(pageId) {
-  const pageBlocks = await notion.blocks.children.list({
-    block_id: pageId,
-  });
-  return pageBlocks;
-}
-
-export function getPageTitle(pageObject) {
-  const pageTitle = pageObject.properties.Titre.title[0].plain_text;
-
-  return pageTitle;
-}
-
-export function getPageId(pageObject) {
-  const pageId = pageObject.id;
-
-  return pageId;
-}
-
-export async function getAllPagesInDatabase(notionDatabaseId) {
-  try {
-    const response = await notion.databases.query({
-      database_id: notionDatabaseId,
-    });
-
-    return response;
-
-  } catch (error) {
-    console.error(error.body)
-  }
-}
-
 export function extractJsonIntoArray(filePath) {
   let array = [];
   if (existsSync(filePath)) {
@@ -154,3 +82,5 @@ export function extractJsonIntoArray(filePath) {
   }
   return array;
 }
+
+export default notion;
