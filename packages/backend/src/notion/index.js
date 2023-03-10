@@ -12,7 +12,7 @@ import '../../loadEnv.js';
 
 import { readdir, unlink, writeFileSync, existsSync, readFileSync } from 'fs';
 
-const notion = new Client({ auth: process.env.NOTION_KEY });
+const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 const textsTestsDatabaseId = process.env.NOTION_DATABASE_ID_TEXTS_TESTS;
 
