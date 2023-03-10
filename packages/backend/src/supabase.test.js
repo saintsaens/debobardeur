@@ -1,8 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { addEntry, connectToSupabase, deleteEntry, getEntry } from './supabase';
 
-import * as dotenv from 'dotenv';
-dotenv.config();
+import '../loadEnv';
 
 test("connects to supabase", () => {
   expect(connectToSupabase(process.env.SUPABASE_URL, process.env.SUPABASE_KEY)).toBeDefined();

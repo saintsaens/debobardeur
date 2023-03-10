@@ -8,9 +8,7 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// Configure dotenv to use process.env for environment variables.
-import * as dotenv from 'dotenv'
-dotenv.config()
+import '../../loadEnv.js';
 
 import { readdir, unlink, writeFileSync, existsSync, readFileSync } from 'fs';
 

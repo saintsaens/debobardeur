@@ -1,8 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 
-import * as dotenv from 'dotenv';
-dotenv.config();
-
+import '../loadEnv.js';
 
 export function connectToSupabase(url, key) {
   const supabase = createClient(url, key);

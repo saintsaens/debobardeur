@@ -2,13 +2,12 @@ import { removeElementFromText, replaceElementFromText } from './textManipulatio
 import { fixCapitalization } from './capitalization.js';
 import { fixPunctuation } from './punctuation.js';
 import { extractJsonIntoArray } from './notion/index.js';
+import '../loadEnv.js';
 
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-import * as dotenv from 'dotenv';
-dotenv.config();
 
 function createFilePath(fileName) {
   const filePath = join(__dirname, "../bobards/", fileName);
