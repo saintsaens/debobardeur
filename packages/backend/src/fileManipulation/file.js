@@ -21,3 +21,19 @@ export function createFileName(testTitle) {
 
   return fileName;
 }
+
+// Remove all files in folder bobards, ending with .json.
+export function removeRuleJsonFiles() {
+  const directory = join(__dirname, "../../bobards/");
+  readdir(directory, (err, files) => {
+    if (err) throw err;
+
+    for (const file of files) {
+      if (file.endsWith('.json')) {
+        unlink(`${directory}/${file}`, err => {
+          if (err) throw err;
+        });
+      }
+    }
+  });
+}
