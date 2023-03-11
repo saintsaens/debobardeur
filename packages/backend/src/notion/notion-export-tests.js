@@ -1,4 +1,4 @@
-import { removeOldTestFiles, getTexts } from './index.js';
+import { removeTestTxtFiles, getTexts } from './index.js';
 
-removeOldTestFiles();
+removeTestTxtFiles();
 getTexts();

@@ -32,7 +32,7 @@ export async function getTexts() {
   }
 }
 
-export function removeOldTestFiles() {
+export function removeTestTxtFiles() {
   const directory = join(__dirname, "../../integrationTests/");
   readdir(directory, (err, files) => {
     if (err) throw err;
