@@ -10,7 +10,7 @@
     "test:ui": "vitest --ui",
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "export:tests": "node ./src/notion/notion-export.js"
+    "export:tests": "node ./src/notion/notion-export-tests.js"
   },
   "dependencies": {
     "@notionhq/client": "^1.0.4",
