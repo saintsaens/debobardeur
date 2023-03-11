@@ -2,6 +2,7 @@ import { Client } from '@notionhq/client';
 import { getAllPagesInDatabase } from './notion-db.js';
 import { getAllBlocksInPage, getPageId, getPageTitle } from './notion-page.js';
 import { getInputText, getOutputTextBlocks, getTextFromParagraphBlocks } from './notion-block.js';
+import { createFileName } from '../fileManipulation/file.js';
 
 // Create the __dirname variable in ES6.
 import { dirname, join } from 'path';
@@ -15,12 +16,6 @@ import { readdir, unlink, writeFileSync, existsSync, readFileSync } from 'fs';
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 const textsTestsDatabaseId = process.env.NOTION_DATABASE_ID_TEXTS_TESTS;
-
-export function createFileName(testTitle) {
-  const fileName = process.env.TEXT_TEST_FILE_BASE_TITLE + testTitle + process.env.TEXT_TEST_FILE_EXTENSION;
-
-  return fileName;
-}
 
 export async function getTexts() {
   const pages = await getAllPagesInDatabase(textsTestsDatabaseId);

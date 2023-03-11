@@ -1,4 +1,5 @@
-import { extractJsonIntoArray, getInputTextBlocks, getOutputTextBlocks, getTextFromParagraphBlocks, createFileName } from '../notion';
+import { extractJsonIntoArray } from '../notion';
+import { createFileName } from '../fileManipulation/file';
 import { writeFileSync, existsSync, unlinkSync } from 'fs';
 
 import { join } from 'path';
