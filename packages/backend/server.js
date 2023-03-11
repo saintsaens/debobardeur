@@ -3,6 +3,7 @@ import cors from 'cors'
 import './loadEnv.js';
 import { debobardize } from './src/debobardeur.js';
 import { connectToSupabase, addEntry } from './src/supabase.js';
+import { createPageInDatabase } from "./src/notion/notion-page.js";
 
 const app = express()
 const port = 3000
@@ -18,10 +19,9 @@ app.post("/", (req, res) => {
   const message = req.body.message
   const newText = debobardize(message)
   res.send(newText);
-
-  // Save to supabase.
-  const supabase = connectToSupabase(process.env.SUPABASE_URL, process.env.SUPABASE_KEY)
-  addEntry(supabase, message)
+  
+  // Save to Notion.
+  createPageInDatabase(process.env.NOTION_DATABASE_ID_TEXTS_USERS, message, newText)
 
 });
 
