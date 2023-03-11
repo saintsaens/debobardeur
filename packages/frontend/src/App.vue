@@ -27,7 +27,7 @@ async function copyResponse() {
     copySuccess.value = true;
     setTimeout(() => {
       copySuccess.value = false;
-    }, 2000);
+    }, 100);
   } catch (err) {
     console.error('Failed to copy response to clipboard: ', err);
   }
