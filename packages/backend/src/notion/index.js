@@ -1,6 +1,6 @@
 import { Client } from '@notionhq/client';
 import { getAllPagesInDatabase } from './notion-db.js';
-import { getAllBlocksInPage, getPageId, getPageTitle } from './notion-page.js';
+import { getAllBlocksInPage, getPageId, getPagePropertyByName, getPageTitle } from './notion-page.js';
 import { getInputText, getOutputTextBlocks, getTextFromParagraphBlocks } from './notion-block.js';
 import { createFileName } from '../fileManipulation/file.js';
 

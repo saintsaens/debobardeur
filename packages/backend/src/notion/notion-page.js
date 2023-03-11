@@ -19,6 +19,26 @@ export function getPageId(pageObject) {
   return pageId;
 }
 
+export function getAllPageProperties(pageObject) {
+  const properties = pageObject.properties;
+  const propertiesArray = Object.keys(properties).map(propertyName => {
+    const property = properties[propertyName];
+    return {
+      ...property,
+      name: propertyName
+    };
+  });
+  return propertiesArray;
+}
+
+export function getPagePropertyByName(pageObject, propertyName) {
+  const pageProperties = getAllPageProperties(pageObject);
+  
+  const property = pageProperties.find((obj) => obj.name === propertyName);
+
+  return property
+}
+
 export async function createPageInDatabase(databaseId, input, output) {
   const response = await notion.pages.create({
     
