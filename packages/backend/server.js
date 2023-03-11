@@ -2,7 +2,6 @@ import express from 'express'
 import cors from 'cors'
 import './loadEnv.js';
 import { debobardize } from './src/debobardeur.js';
-import { connectToSupabase, addEntry } from './src/supabase.js';
 import { createPageInDatabase } from "./src/notion/notion-page.js";
 
 const app = express()
