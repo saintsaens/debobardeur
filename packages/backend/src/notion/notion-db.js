@@ -6,9 +6,17 @@ export async function getAllPagesInDatabase(notionDatabaseId) {
       database_id: notionDatabaseId,
     });
 
-    return response;
+    const pagesArray = getArrayOfPages(response);
+
+    return pagesArray;
 
   } catch (error) {
     console.error(error.body)
   }
+}
+
+export function getArrayOfPages(pagesObject) {
+  const pagesArray = pagesObject.results.map(page => page);
+
+  return pagesArray;
 }

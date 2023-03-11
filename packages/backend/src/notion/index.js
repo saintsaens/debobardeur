@@ -19,8 +19,8 @@ const textsTestsDatabaseId = process.env.NOTION_DATABASE_ID_TEXTS_TESTS;
 
 export async function getTexts() {
   const pages = await getAllPagesInDatabase(textsTestsDatabaseId);
-  for (let i = 0; i < pages.results.length; i++) {
-    const page = pages.results[i];
+  for (let i = 0; i < pages.length; i++) {
+    const page = pages[i];
     const pageTitle = getPageTitle(page);
     const pageId = getPageId(page);
     const pageBlocks = await getAllBlocksInPage(pageId);
