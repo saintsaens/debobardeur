@@ -2,8 +2,6 @@ import { extractJsonIntoArray } from '../notion';
 import { createFileName } from '../fileManipulation/file';
 import { writeFileSync, existsSync, unlinkSync } from 'fs';
 
-import { join } from 'path';
-
 test('checks JSON file is correctly read and parsed', () => {
   const output = ["très", "vraiment"];
   const filepath = './testFile.json';
