@@ -11,7 +11,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 import '../../loadEnv.js';
 
-import { readdir, unlink, writeFileSync, existsSync, readFileSync } from 'fs';
+import { writeFileSync, existsSync, readFileSync } from 'fs';
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
@@ -30,21 +30,6 @@ export async function getTexts() {
 
     writeTestIntoFile(pageTitle, inputText, outputText);
   }
-}
-
-export function removeTestTxtFiles() {
-  const directory = join(__dirname, "../../integrationTests/");
-  readdir(directory, (err, files) => {
-    if (err) throw err;
-
-    for (const file of files) {
-      if (file.endsWith('.txt')) {
-        unlink(`${directory}/${file}`, err => {
-          if (err) throw err;
-        });
-      }
-    }
-  });
 }
 
 export function writeTestIntoFile(testTitle, testInputText, testOutputText) {

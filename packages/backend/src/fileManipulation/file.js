@@ -2,6 +2,8 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+import { readdir, unlink } from 'fs';
+
 import '../../loadEnv.js';
 
 export function createFilePath(fileName) {
@@ -30,6 +32,22 @@ export function removeRuleJsonFiles() {
 
     for (const file of files) {
       if (file.endsWith('.json')) {
+        unlink(`${directory}/${file}`, err => {
+          if (err) throw err;
+        });
+      }
+    }
+  });
+}
+
+// Remove all files in folder integrationTests, ending with .txt.
+export function removeTestTxtFiles() {
+  const directory = join(__dirname, "../../integrationTests/");
+  readdir(directory, (err, files) => {
+    if (err) throw err;
+
+    for (const file of files) {
+      if (file.endsWith('.txt')) {
         unlink(`${directory}/${file}`, err => {
           if (err) throw err;
         });
