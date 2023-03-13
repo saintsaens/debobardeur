@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/api/:match*",
+      "source": "/proxy/:match*",
       "destination": "backend/server.js"
     },
     {
