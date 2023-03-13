@@ -10,7 +10,8 @@
     "dev": "pnpm --recursive --parallel run dev",
     "build": "pnpm --recursive --parallel run build",
     "start": "pnpm --recursive --parallel run start",
-    "export:tests": "node ./packages/backend/src/notion/notion-export-tests.js"
+    "export:tests": "node ./packages/backend/src/notion/notion-export-tests.js",
+    "export:rules": "node ./packages/backend/src/notion/notion-export-rules.js"
   },
   "devDependencies": {
     "@vitest/ui": "^0.28.5",
