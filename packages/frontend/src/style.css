@@ -2,7 +2,6 @@
   --color-background: hsl(20deg, 10%, 15%);
   --color-background-light: hsl(20deg, 10%, 20%);
   --color-background-lighter: hsl(20deg, 10%, 40%);
-
   --color-content: hsl(0deg, 0%, 100%);
   --color-content-soft: hsla(0deg, 0%, 100%, 50%);
  }
@@ -61,7 +60,6 @@ a {
 }
 
 .button-4 {
-  appearance: none;
   background-color: hsl(20deg, 10%, 20%);
   border: 2px solid hsl(20deg, 10%, 40%);
   border-radius: 8px;
@@ -76,16 +74,9 @@ a {
   padding: 6px 16px;
   position: relative;
   transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
   vertical-align: middle;
-  white-space: nowrap;
-  word-wrap: break-word;
 }
 
 .button-4:hover {
   background-color: hsl(20deg, 10%, 25%);
-  text-decoration: none;
-  transition-duration: 0.1s;
 }
