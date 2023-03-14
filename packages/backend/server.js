@@ -4,24 +4,23 @@ import './loadEnv.js';
 import { debobardize } from './src/debobardeur.js';
 import { createPageInDatabase } from "./src/notion/notion-page.js";
 
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
 app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json("GET request received!")
+  res.json("You’ve reached the débobardeur. Please leave a message.");
 });
 
 app.post("/", (req, res) => {
-  const message = req.body.message
-  const newText = debobardize(message)
+  const message = req.body.message;
+  const newText = debobardize(message);
   res.send(newText);
   
   // Save to Notion.
   createPageInDatabase(process.env.NOTION_DATABASE_ID_TEXTS_USERS, message, newText)
-
 });
 
 app.listen(port, () => {
