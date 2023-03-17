@@ -1,3 +1,7 @@
-# Débobardeur
+![CleanShot 2023-03-17 at 14 08 17](https://user-images.githubusercontent.com/7119880/225913819-f589b318-934d-4803-9cc7-2462cb6a62c5.gif)
 
-![CleanShot 2023-01-20 at 17 17 14](https://user-images.githubusercontent.com/7119880/213749467-24e7b265-f0ef-46e0-8bb7-bc81e64149e4.gif)
+## Setup
+
+1. Install [pnpm]([url](https://pnpm.io/installation)).
+2. Install node.js.
+3. Run `pnpm run start`.
