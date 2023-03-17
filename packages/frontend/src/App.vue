@@ -38,7 +38,7 @@ async function copyResponse() {
 <template>
   <div class="wrapper">
     <textarea v-model="text" class="input" @keydown="handleKeyDown" autofocus placeholder="Entrez votre texte.">
-  </textarea>
+        </textarea>
     <div class="button-wrapper">
       <input type="submit" value="Débobardiser (⌘+↵)" class="button-4" role="button" @click="updateResponse">
     </div>
@@ -52,21 +52,24 @@ async function copyResponse() {
       </span>
     </div>
     <p v-if="copySuccess">Copié dans le presse-papiers !</p>
+    <footer class="footer">
+      <p>Le débobardeur est une application libre et <a href="https://github.com/saintsaens/debobardeur" target="_blank" rel="noopener">ouverte</a>. Elle n’utilise pas de cookies.</p>
+    </footer>
   </div>
 </template>
 
 <style scoped lang="scss">
-
 .wrapper {
   display: flex;
   gap: 16px;
   flex-direction: column;
   width: 800px;
-  
+
   .response-wrapper {
     display: flex;
     gap: 8px;
     width: 100%;
+
     .copy-icon {
       cursor: pointer;
       flex-grow: 0;
@@ -79,7 +82,8 @@ async function copyResponse() {
       align-items: center;
       border-radius: 8px;
       color: var(--color-content-soft);
-      &:hover{
+
+      &:hover {
         color: var(--color-content);
       }
     }
@@ -95,12 +99,6 @@ async function copyResponse() {
     flex-grow: 1;
   }
 
-  .blink {
-    background: white;
-    animation: blink 0.01s;
-  }
-
-
   .material-symbols-outlined {
     font-variation-settings:
       'FILL' 0,
@@ -109,5 +107,20 @@ async function copyResponse() {
       'opsz' 48
   }
 
-}
-</style>
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-background-light);
+    color: var(--color-content-soft);
+    font: 12px "Lucida Grande", Helvetica, Arial, sans-serif;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+
+}</style>

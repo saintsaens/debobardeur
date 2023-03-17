@@ -7,8 +7,9 @@
  }
 
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 2rem;
+  font-size: 14px;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
   line-height: 1.8;
   display: flex;
   align-items: center;
@@ -17,19 +18,10 @@ body {
   color: var(--color-content);
 }
 
-footer {
-  font: 11px "Lucida Grande", Helvetica, Arial, sans-serif;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
 button, input, textarea {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: hsl(0deg, 0%, 100%);
+  font-size: 14px;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: var(--color-content);
 }
 
 textarea {
@@ -37,12 +29,12 @@ textarea {
 }
 
 a {
-  color: hsl(20deg, 10%, 40%);
+  color: var(--color-background-lighter);
 }
 
 .preview, .input {
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 0.5rem;
+  padding: 1rem;
   width: 100%;
   background-color: var(--color-background-light);
 }
@@ -52,7 +44,7 @@ a {
 }
 
 .input:focus {
-  outline: 0;
+  outline: none;
 }
 
 .preview {
