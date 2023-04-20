@@ -1,4 +1,4 @@
-import { fixCommas, fixMultipleSpaces, fixLeadingPunctuation, removeSpacesAfterFinalPeriod, fixSpaceBeforeAndAfterPeriod, fixUglyArrows, fixPunctuation } from './punctuation.js';
+import { fixCommas, fixMultipleSpaces, fixLeadingPunctuation, removeSpacesAfterFinalPeriod, fixSpaceBeforeAndAfterPeriod, fixUglyArrows, fixSpacedBrackets, fixPunctuation } from './punctuation.js';
 
 test('replaces any variation of comma punctuation with comma+space', () => {
   const input = ["oui", " , ", "non", " ,", "peut-être", ",", "bref", "."];
@@ -37,9 +37,15 @@ test('does not change spacing if period is a dot', () => {
 });
 
 test('turns ugly arrows (->) into nice arrows (→)', () => {
-  const input = "Cliquez sur bon -> jour";
-  const output = "Cliquez sur bon → jour";
+  const input = "Cliquez sur bon -> jour et sur bon -> soir.";
+  const output = "Cliquez sur bon → jour et sur bon → soir.";
   expect(fixUglyArrows(input)).toStrictEqual(output);
+});
+
+test('removes spaces after opening brackets and before closing brackets', () => {
+  const input = ["( ", "salut", " )"];
+  const output = ["(", "salut", ")"];
+  expect(fixSpacedBrackets(input)).toStrictEqual(output);
 });
 
 test('fixes all punctuation', () => {
