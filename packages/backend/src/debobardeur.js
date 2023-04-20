@@ -48,7 +48,7 @@ export function replaceBobards(text, remplacement) {
 
   keys.forEach(key => {
     if (text.toLowerCase().includes(key)) {
-      newText = replaceElementFromText(text, key, remplacement[key])
+      newText = replaceElementFromText(newText, key, remplacement[key])
     }
   });
   return newText;
