@@ -37,6 +37,14 @@ test('replaces "Lorem" with "Truc" from "Lorem ipsum dolor"', () => {
   expect(replaceElementFromText(input, element1, element2)).toBe(output);
 });
 
+test('replaces "Et ensuite faites ça" with "Ensuite, faites ça"', () => {
+  const input = "Et ensuite faites ça"
+  const element1 = "Et ensuite"
+  const element2 = "ensuite,"
+  const output = "ensuite, faites ça"
+  expect(replaceElementFromText(input, element1, element2)).toBe(output);
+});
+
 test("split text into array keeping punctuation", () => {
   const inputText = "Oui, non mais peut-être aujourd’hui."
   const outputArray = ["Oui", ", ", "non", " ", "mais", " ", "peut-être", " ", "aujourd’hui", "."]
