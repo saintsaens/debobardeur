@@ -29,6 +29,9 @@ export function removeSpacesAfterFinalPeriod(arr) {
     if (arr[arr.length - 1].includes('.')) {
       arr[arr.length - 1] = arr[arr.length - 1].trim();
     }
+    if (arr[arr.length - 1].includes('…')) {
+      arr[arr.length - 1] = arr[arr.length - 1].trim();
+    }
   }
   return arr;
 }
@@ -36,13 +39,21 @@ export function removeSpacesAfterFinalPeriod(arr) {
 export function fixSpaceBeforeAndAfterPeriod(arr) {
   for (let i = 0; i < arr.length; i++) {
     arr[i] = arr[i].replace(/ *\. +/g, ". ");
+    arr[i] = arr[i].replace(/ *\… +/g, "… ");
   }
   return arr;
 }
 
 export function fixUglyArrows(text) {
-  const niceArrowedText = text.replace('->', '→');
+  const niceArrowedText = text.replace(/->/g, '→');
   return niceArrowedText;
+}
+
+export function fixSpacedBrackets(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].replace(/\( +/g, "(").replace(/ +\)/g, ")");
+  }
+  return arr;
 }
 
 export function fixPunctuation(text) {
@@ -53,6 +64,7 @@ export function fixPunctuation(text) {
   split_text = fixLeadingPunctuation(split_text);
   split_text = fixSpaceBeforeAndAfterPeriod(split_text);
   split_text = removeSpacesAfterFinalPeriod(split_text);
+  split_text = fixSpacedBrackets(split_text);
 
   // Stitch the list back together.
   var reunited_text = reuniteTextWithPunctuation(split_text);
