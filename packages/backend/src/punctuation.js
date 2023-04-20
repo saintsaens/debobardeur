@@ -17,8 +17,8 @@ export function fixMultipleSpaces(arr) {
 }
 
 export function fixLeadingPunctuation(arr) {
-  // Remove leading punctuation, if there is one.
-  while (arr[0] && !arr[0][0].match(/[a-zA-ZÀ-ÿ]/)) {
+  // Remove leading punctuation, if there is one — except opening square brackets.
+  while (arr[0] && !arr[0][0].match(/[a-zA-ZÀ-ÿ]/) && !arr[0][0].match(/\[/)) {
     arr.shift();
   }
   return arr;
