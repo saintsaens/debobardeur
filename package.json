@@ -8,6 +8,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "dev": "pnpm --recursive --parallel run dev",
+    "prod": "pnpm --recursive --parallel run prod",
     "build": "pnpm --recursive --parallel run build",
     "start": "pnpm --recursive --parallel run start",
     "export:tests": "node ./packages/backend/src/notion/notion-export-tests.js",
