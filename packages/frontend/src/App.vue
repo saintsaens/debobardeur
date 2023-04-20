@@ -53,7 +53,7 @@ async function copyResponse() {
     </div>
     <p v-if="copySuccess">Copié dans le presse-papiers !</p>
     <footer class="footer">
-      <p>Le débobardeur est une application libre et <a href="https://github.com/saintsaens/debobardeur" target="_blank" rel="noopener">ouverte</a>. Elle n’utilise pas de cookies.</p>
+      <p>Le débobardeur est une application <a href="https://github.com/saintsaens/debobardeur" target="_blank" rel="noopener">libre et ouverte</a>. Elle n’utilise pas de cookies. Les textes soumis sont enregistrés dans une base de données.</p>
     </footer>
   </div>
 </template>
