@@ -1,4 +1,4 @@
-import { fixCommas, fixMultipleSpaces, fixLeadingPunctuation, removeSpacesAfterFinalPeriod, fixSpaceBeforeAndAfterPeriod, fixUglyArrows, fixSpacedBrackets, fixPunctuation } from './punctuation.js';
+import { fixCommas, fixMultipleSpaces, fixLeadingPunctuation, removeSpacesAfterFinalPeriod, fixSpaceBeforeAndAfterPeriod, fixUglyArrows, fixSpacedBrackets, fixPunctuation, fixSpaceBetweenTwoPeriods } from './punctuation.js';
 
 test('replaces any variation of comma punctuation with comma+space', () => {
   const input = ["oui", " , ", "non", " ,", "peut-être", ",", "bref", "."];
@@ -28,6 +28,12 @@ test('fixes spaces before and after period', () => {
   const input = ['   .     ', ' , '];
   const output = ['. ', ' , '];
   expect(fixSpaceBeforeAndAfterPeriod(input)).toStrictEqual(output);
+});
+
+test('fixes spaces between two periods in case of removal of the whole sentence', () => {
+  const input = [ 'Blabla', ' ', 'ça', ' ', 'fonctionne', '. .' ];
+  const output = [ 'Blabla', ' ', 'ça', ' ', 'fonctionne', '.' ];
+  expect(fixSpaceBetweenTwoPeriods(input)).toStrictEqual(output);
 });
 
 test('does not change spacing if period is a dot', () => {

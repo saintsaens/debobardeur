@@ -44,6 +44,13 @@ export function fixSpaceBeforeAndAfterPeriod(arr) {
   return arr;
 }
 
+export function fixSpaceBetweenTwoPeriods(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].replace(/\.\s+\./g, ".");
+  }
+  return arr;
+}
+
 export function fixUglyArrows(text) {
   const niceArrowedText = text.replace(/->/g, '→');
   return niceArrowedText;
@@ -59,11 +66,13 @@ export function fixSpacedBrackets(arr) {
 export function fixPunctuation(text) {
   // Create a list of the text, including punctuation.
   var split_text = splitTextWithPunctuation(text);
+  console.log(split_text);
   split_text = fixCommas(split_text);
   split_text = fixMultipleSpaces(split_text);
   split_text = fixLeadingPunctuation(split_text);
   split_text = fixSpaceBeforeAndAfterPeriod(split_text);
   split_text = removeSpacesAfterFinalPeriod(split_text);
+  split_text = fixSpaceBetweenTwoPeriods(split_text);
   split_text = fixSpacedBrackets(split_text);
 
   // Stitch the list back together.
