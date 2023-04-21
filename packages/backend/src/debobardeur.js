@@ -36,7 +36,7 @@ export function removeBobards(text, bobards) {
   let newText = text;
   bobards.forEach(word => {
     if (text.toLowerCase().includes(word.toLowerCase())) {
-      newText = removeElementFromText(text, word);
+      newText = removeElementFromText(newText, word);
     }
   });
   return newText;
