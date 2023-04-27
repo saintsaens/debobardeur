@@ -8,6 +8,14 @@ export function fixCommas(arr) {
   return arr;
 }
 
+export function fixApostrophes(arr) {
+  // Replace all straight apostrophes with curved apostrophes.
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].replace(/'/g, "’");
+  }
+  return arr;
+}
+
 export function fixMultipleSpaces(arr) {
   // Replace multiple spaces with single space.
   for (let i = 0; i < arr.length; i++) {
@@ -66,8 +74,8 @@ export function fixSpacedBrackets(arr) {
 export function fixPunctuation(text) {
   // Create a list of the text, including punctuation.
   var split_text = splitTextWithPunctuation(text);
-  console.log(split_text);
   split_text = fixCommas(split_text);
+  split_text = fixApostrophes(split_text);
   split_text = fixMultipleSpaces(split_text);
   split_text = fixLeadingPunctuation(split_text);
   split_text = fixSpaceBeforeAndAfterPeriod(split_text);

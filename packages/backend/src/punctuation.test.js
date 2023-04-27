@@ -1,9 +1,15 @@
-import { fixCommas, fixMultipleSpaces, fixLeadingPunctuation, removeSpacesAfterFinalPeriod, fixSpaceBeforeAndAfterPeriod, fixUglyArrows, fixSpacedBrackets, fixPunctuation, fixSpaceBetweenTwoPeriods } from './punctuation.js';
+import { fixCommas, fixMultipleSpaces, fixLeadingPunctuation, removeSpacesAfterFinalPeriod, fixSpaceBeforeAndAfterPeriod, fixUglyArrows, fixSpacedBrackets, fixPunctuation, fixSpaceBetweenTwoPeriods, fixApostrophes } from './punctuation.js';
 
 test('replaces any variation of comma punctuation with comma+space', () => {
   const input = ["oui", " , ", "non", " ,", "peut-être", ",", "bref", "."];
   const output = ["oui", ", ", "non", ", ", "peut-être", ", ", "bref", "."];
   expect(fixCommas(input)).toStrictEqual(output);
+});
+
+test('replaces any straight apostrophes with curved apostrophes', () => {
+  const input = ["aujourd'hui"];
+  const output = ["aujourd’hui"];
+  expect(fixApostrophes(input)).toStrictEqual(output);
 });
 
 test('replaces any multiple space with single space', () => {
