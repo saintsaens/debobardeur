@@ -20,8 +20,14 @@ export function debobardize(textWithBobards) {
 
   for (let i = 0; i < lines.length; i++) {
     if (lines[i] != "") {
-      let textWithRemovedElements = removeBobards(lines[i], bobards);
+      // Fix punctuation on the input text, to fix apostrophes.
+      const originalTextWithFixedPunctuation = fixPunctuation(lines[i])
+
+      // Remove and replace.
+      let textWithRemovedElements = removeBobards(originalTextWithFixedPunctuation, bobards);
       let textWithReplacedElements = replaceBobards(textWithRemovedElements, remplacements);
+
+      // Fix punctuation at the end, to clean all weird punctuation stuff created by removal and replacements.
       let textWithFixedPunctuation = fixPunctuation(textWithReplacedElements);
       lines[i] = fixCapitalization(textWithFixedPunctuation);
     }
