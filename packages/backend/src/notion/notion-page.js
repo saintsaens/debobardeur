@@ -40,6 +40,8 @@ export function getPagePropertyByName(pageObject, propertyName) {
 }
 
 export async function createPageInDatabase(databaseId, input, output) {
+  const truncated_input = input.slice(0, 50);
+  
   const response = await notion.pages.create({
     
     // Indicate it should be added to a database.
@@ -54,7 +56,7 @@ export async function createPageInDatabase(databaseId, input, output) {
         "title": [
           {
             "text": {
-              "content": input
+              "content": truncated_input
             }
           }
         ]
