@@ -1,0 +1,43 @@
+name: Semantic Versioning
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install Dependencies
+        run: npm install
+      - name: Determine Version
+        id: determine_version
+        run: |
+          previous_tag=$(git describe --tags --abbrev=0)
+          echo "Previous tag: $previous_tag"
+          tag_prefix=$(echo $previous_tag | cut -d '.' -f 1-2)
+          echo "Tag prefix: $tag_prefix"
+          commits=$(git log $previous_tag..HEAD --pretty=oneline)
+          echo "Commits: $commits"
+          if echo $commits | grep -qE "feat|fix"; then
+            new_version=$(semver --increment $tag_prefix)
+          else
+            new_version=$tag_prefix.0
+          fi
+          echo "New version: $new_version"
+          echo "::set-output name=new_version::$new_version"
+      - name: Create Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.determine_version.outputs.new_version }}
+          release_name: Release ${{ steps.determine_version.outputs.new_version }}
+          body: |
+            Changes since $previous_tag:
+            $commits
+
