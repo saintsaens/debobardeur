@@ -96,11 +96,14 @@ export function fixSpacedBrackets(arr) {
 export function fixPunctuation(text) {
   // Create a list of the text, including punctuation.
   var split_text = splitTextWithPunctuation(text);
+
+  // Run the fixing train.
   split_text = fixCommas(split_text);
   split_text = fixApostrophes(split_text);
   split_text = fixMultipleSpaces(split_text);
   split_text = fixLeadingPunctuation(split_text);
   split_text = fixSpaceBeforeAndAfterPeriod(split_text);
+  split_text = fixPeriodComma(split_text);
   split_text = removeSpacesAfterFinalComma(split_text);
   split_text = removeSpacesAfterFinalPeriod(split_text);
   split_text = removeSpacesAfterFinalEllipsis(split_text);
