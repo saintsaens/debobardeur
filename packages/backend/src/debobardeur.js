@@ -30,6 +30,12 @@ export function debobardize(textWithBobards) {
       // Fix punctuation at the end, to clean all weird punctuation stuff created by removal and replacements.
       let textWithFixedPunctuation = fixPunctuation(textWithReplacedElements);
       lines[i] = fixCapitalization(textWithFixedPunctuation);
+
+      // If line is blank at the end of the removal and replacement process, remove it.
+      if (lines[i] == "") {
+        lines.splice(i, 1);
+        i--;
+      }
     }
   }
 
