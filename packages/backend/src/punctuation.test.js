@@ -1,4 +1,4 @@
-import { fixCommas, fixMultipleSpaces, fixLeadingPunctuation, removeSpacesAfterFinalPeriod, fixSpaceBeforeAndAfterPeriod, fixUglyArrows, fixSpacedBrackets, fixPunctuation, fixSpaceBetweenTwoPeriods, fixApostrophes } from './punctuation.js';
+import { fixCommas, fixMultipleSpaces, fixLeadingPunctuation, removeSpacesAfterFinalPeriod, fixSpaceBeforeAndAfterPeriod, fixUglyArrows, fixSpacedBrackets, fixPunctuation, fixSpaceBetweenTwoPeriods, fixApostrophes, fixPeriodComma, removeSpacesAfterFinalEllipsis, removeSpacesAfterFinalComma } from './punctuation.js';
 
 test('replaces any variation of comma punctuation with comma+space', () => {
   const input = ["oui", " , ", "non", " ,", "peut-être", ",", "bref", "."];
@@ -24,10 +24,22 @@ test('removes any starting character that isn’t an alphabetic character', () =
   expect(fixLeadingPunctuation(input)).toStrictEqual(output);
 });
 
-test('fixes space before the final period', () => {
-  const input = ['Hello', 'world', '  .'];
+test('removes space after the final period', () => {
+  const input = ['Hello', 'world', '. '];
   const output = ['Hello', 'world', '.'];
   expect(removeSpacesAfterFinalPeriod(input)).toStrictEqual(output);
+});
+
+test('removes space after the final comma', () => {
+  const input = ['Hello', 'world', ', '];
+  const output = ['Hello', 'world', ','];
+  expect(removeSpacesAfterFinalComma(input)).toStrictEqual(output);
+});
+
+test('removes space before and after the final ellipsis', () => {
+const input = ['Hello', 'world', ' … '];
+  const output = ['Hello', 'world', '…'];
+  expect(removeSpacesAfterFinalEllipsis(input)).toStrictEqual(output);
 });
 
 test('fixes spaces before and after period', () => {
@@ -40,6 +52,12 @@ test('fixes spaces between two periods in case of removal of the whole sentence'
   const input = [ 'Blabla', ' ', 'ça', ' ', 'fonctionne', '. .' ];
   const output = [ 'Blabla', ' ', 'ça', ' ', 'fonctionne', '.' ];
   expect(fixSpaceBetweenTwoPeriods(input)).toStrictEqual(output);
+});
+
+test('fixes period+comma into period in case of removal of an expression', () => {
+  const input = [ 'Blabla', '., ', 'la', ' ', 'seule', '.' ];
+  const output = [ 'Blabla', '. ', 'la', ' ', 'seule', '.' ];
+  expect(fixPeriodComma(input)).toStrictEqual(output);
 });
 
 test('does not change spacing if period is a dot', () => {

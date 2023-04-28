@@ -37,6 +37,21 @@ export function removeSpacesAfterFinalPeriod(arr) {
     if (arr[arr.length - 1].includes('.')) {
       arr[arr.length - 1] = arr[arr.length - 1].trim();
     }
+  }
+  return arr;
+}
+
+export function removeSpacesAfterFinalComma(arr) {
+  if (arr.length > 0) {
+    if (arr[arr.length - 1].includes(',')) {
+      arr[arr.length - 1] = arr[arr.length - 1].trim();
+    }
+  }
+  return arr;
+}
+
+export function removeSpacesAfterFinalEllipsis(arr) {
+  if (arr.length > 0) {
     if (arr[arr.length - 1].includes('…')) {
       arr[arr.length - 1] = arr[arr.length - 1].trim();
     }
@@ -55,6 +70,13 @@ export function fixSpaceBeforeAndAfterPeriod(arr) {
 export function fixSpaceBetweenTwoPeriods(arr) {
   for (let i = 0; i < arr.length; i++) {
     arr[i] = arr[i].replace(/\.\s+\./g, ".");
+  }
+  return arr;
+}
+
+export function fixPeriodComma(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].replace(/\.,\s/g, ". ");
   }
   return arr;
 }
@@ -79,7 +101,9 @@ export function fixPunctuation(text) {
   split_text = fixMultipleSpaces(split_text);
   split_text = fixLeadingPunctuation(split_text);
   split_text = fixSpaceBeforeAndAfterPeriod(split_text);
+  split_text = removeSpacesAfterFinalComma(split_text);
   split_text = removeSpacesAfterFinalPeriod(split_text);
+  split_text = removeSpacesAfterFinalEllipsis(split_text);
   split_text = fixSpaceBetweenTwoPeriods(split_text);
   split_text = fixSpacedBrackets(split_text);
 
