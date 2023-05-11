@@ -1,15 +1,19 @@
 {
-  "pas aujourd’hui, j’en suis navré": "non",
-  "gros souci urgent": "souci",
-  "gros problème urgent": "problème",
-  "approximativement": "[EXACTEMENT]",
-  "dans certains cas": "dans [QUELS ?] cas",
-  "et ensuite": "ensuite,",
-  "il faut désactiver": "désactivez",
-  "etc": "[PAS DE « etc » : LISTER TOUS LES ÉLÉMENTS]",
   "un moyen est de": "un autre moyen est de",
+  "un moyen est d’": "un autre moyen est d’",
   "des différents": "des",
   "il vous faut changer": "changez",
   "plein": "[COMBIEN ?]",
-  "un moyen est d’": "un autre moyen est d’"
+  "etc": "[PAS DE « etc » : LISTER TOUS LES ÉLÉMENTS]",
+  "il faut désactiver": "désactivez",
+  "et ensuite": "ensuite,",
+  "dans certains cas": "dans [QUELS ?] cas",
+  "approximativement": "[EXACTEMENT]",
+  "gros problème urgent": "problème",
+  "gros souci urgent": "souci",
+  "pas aujourd’hui, j’en suis navré": "non",
+  "Faire du ciel le plus bel endroit de la terre": "blablabla",
+  "nous voulons remercier": "nous remercions",
+  "nous ont placés en tête": "ont voté pour nous",
+  "rien n’est plus précieux et touchant que la confiance reçue dans une élection": "je considère que vous me faites confiance"
 }
