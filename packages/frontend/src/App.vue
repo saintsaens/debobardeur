@@ -53,7 +53,14 @@ async function copyResponse() {
     </div>
     <p v-if="copySuccess">Copié dans le presse-papiers !</p>
     <footer class="footer">
-      <p>Le débobardeur est une application <a href="https://github.com/saintsaens/debobardeur" target="_blank" rel="noopener">libre et ouverte</a>. Elle n’utilise pas de cookies. Les textes soumis sont enregistrés dans une base de données.</p>
+      <div class="footer-left">
+        <p class="footer-left-text">{{COMMIT_COUNT}} commits so far.</p>
+      </div>
+      <div class="footer-center">
+        <p>Le débobardeur est une application <a href="https://github.com/saintsaens/debobardeur" target="_blank"
+            rel="noopener">libre et ouverte</a>. Elle n’utilise pas de cookies. Les textes soumis sont enregistrés dans
+          une base de données.</p>
+      </div>
     </footer>
   </div>
 </template>
@@ -114,7 +121,6 @@ async function copyResponse() {
     right: 0;
     height: 40px;
     display: flex;
-    justify-content: center;
     align-items: center;
     background-color: var(--color-background-light);
     color: var(--color-content-soft);
@@ -123,4 +129,21 @@ async function copyResponse() {
     z-index: 1;
   }
 
-}</style>
+  .footer-left {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
+
+  .footer-left-text {
+    font-size: 9px;
+  }
+
+  .footer-center {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+}
+</style>
