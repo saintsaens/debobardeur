@@ -54,7 +54,7 @@ async function copyResponse() {
     <p v-if="copySuccess">Copié dans le presse-papiers !</p>
     <footer class="footer">
       <div class="footer-left">
-        <p class="footer-left-text">{{COMMIT_COUNT}} commits so far.</p>
+        <p class="footer-left-text"><!-- COMMIT_COUNT --> commits so far.</p>
       </div>
       <div class="footer-center">
         <p>Le débobardeur est une application <a href="https://github.com/saintsaens/debobardeur" target="_blank"
