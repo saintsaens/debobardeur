@@ -23,12 +23,14 @@ export function debobardize(textWithBobards) {
       // Fix punctuation on the input text, to fix apostrophes.
       const originalTextWithFixedPunctuation = fixPunctuation(lines[i])
 
-      // Remove and replace.
+      // Remove bobards, then fix punctuation.
       let textWithRemovedElements = removeBobards(originalTextWithFixedPunctuation, bobards);
-      let textWithReplacedElements = replaceBobards(textWithRemovedElements, remplacements);
+      textWithRemovedElements = fixPunctuation(textWithRemovedElements);
 
-      // Fix punctuation at the end, to clean all weird punctuation stuff created by removal and replacements.
+      // Replace bobards, then fix punctuation.
+      let textWithReplacedElements = replaceBobards(textWithRemovedElements, remplacements);
       let textWithFixedPunctuation = fixPunctuation(textWithReplacedElements);
+
       lines[i] = fixCapitalization(textWithFixedPunctuation);
 
       // If line is blank at the end of the removal and replacement process, remove it.
