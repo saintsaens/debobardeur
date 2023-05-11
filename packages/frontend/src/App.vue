@@ -54,7 +54,7 @@ async function copyResponse() {
     <p v-if="copySuccess">Copié dans le presse-papiers !</p>
     <footer class="footer">
       <div class="footer-left">
-        <p class="footer-left-text">2023-05-11 13:16:54 +0200 — 0.1.0 (200).</p>
+        <p class="footer-left-text">2023-05-11 14:22:35 +0200 — 0.1.0 (201).</p>
       </div>
       <div class="footer-center">
         <p>Le débobardeur est une application <a href="https://github.com/saintsaens/debobardeur" target="_blank"

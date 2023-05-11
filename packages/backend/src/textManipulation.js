@@ -1,5 +1,5 @@
 export function removeElementFromText(text, element) {
-  const textWithRemovedElement = text.replace(new RegExp(element, "i"), "");
+  const textWithRemovedElement = text.replace(new RegExp(element, "ig"), "");
 
   return textWithRemovedElement;
 }
