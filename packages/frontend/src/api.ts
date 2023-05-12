@@ -5,7 +5,7 @@ const url = import.meta.env.VITE_BACKEND_URL;
 export async function postData(text: string) {
   try {
     const response: AxiosResponse = await axios.post(url, {message: text});
-    const data = response.data;
+    const data = { text: response.data.text, modifications: response.data.modifications};
 
     return data;
 

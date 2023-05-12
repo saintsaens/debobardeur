@@ -15,12 +15,15 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  const message = req.body.message;
-  const newText = debobardize(message);
-  res.send(newText);
-  
+  const incomingText = req.body.message;
+  const output = debobardize(incomingText);
+  const outputText = output.text;
+  const outputModifications = output.modifications;
+
   // Save to Notion.
-  createPageInDatabase(process.env.NOTION_DATABASE_ID_TEXTS_USERS, message, newText)
+  createPageInDatabase(process.env.NOTION_DATABASE_ID_TEXTS_USERS, incomingText, outputText)
+  
+  res.send({text: outputText, modifications: outputModifications});
 });
 
 app.listen(port, () => {

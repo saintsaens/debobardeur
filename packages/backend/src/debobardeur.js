@@ -9,6 +9,10 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+// Initialize the arrays keeping track of removed and replaced elements.
+let bobardsFound = [];
+let remplacementsFound = [];
+
 export function debobardize(textWithBobards) {
   var lines = textWithBobards.split("\n");
 
@@ -43,7 +47,13 @@ export function debobardize(textWithBobards) {
 
   const reunitedText = lines.join("\n");
 
-  return reunitedText;
+  const response = {text: reunitedText, modifications: {suppressions: bobardsFound, remplacements: remplacementsFound}};
+
+  // Reset the log arrays for next use.
+  bobardsFound = [];
+  remplacementsFound = [];
+
+  return response;
 }
 
 export function removeBobards(text, bobards) {
@@ -51,6 +61,9 @@ export function removeBobards(text, bobards) {
   bobards.forEach(word => {
     if (text.toLowerCase().includes(word.toLowerCase())) {
       newText = removeElementFromText(newText, word);
+
+      // Log the removed elements.
+      bobardsFound.push(word);
     }
   });
   return newText;
@@ -63,6 +76,9 @@ export function replaceBobards(text, remplacement) {
   keys.forEach(key => {
     if (text.toLowerCase().includes(key)) {
       newText = replaceElementFromText(newText, key, remplacement[key])
+
+      // Log the replaced elements.
+      remplacementsFound.push({old: key, new: remplacement[key]});
     }
   });
   return newText;

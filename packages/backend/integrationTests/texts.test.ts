@@ -13,5 +13,5 @@ test.each(txtFiles)('debobardizes txt file: %s', (file) => {
   const input: string = test[0];
   const output: string = test[1];
 
-  expect(debobardize(input)).toBe(output);
+  expect((debobardize(input)).text).toBe(output);
 });

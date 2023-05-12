@@ -3,13 +3,13 @@ import { debobardize as _debobardize, removeBobards, replaceBobards } from './de
 test('debobardizes "Je suis vraiment content" into "Je suis content"', () => {
   const input = "Je suis vraiment content"
   const output = "Je suis content"
-  expect(_debobardize(input)).toBe(output);
+  expect((_debobardize(input)).text).toBe(output);
 });
 
 test('debobardizes "" into ""', () => {
   const input = ""
   const output = ""
-  expect(_debobardize(input)).toBe(output);
+  expect((_debobardize(input)).text).toBe(output);
 });
 
 test('removes bobard "très"', () => {
@@ -29,11 +29,11 @@ test('replaces bobard "un moyen est d’"', () => {
 test('debobardizes "Un moyen est d’utiliser" into "Vous pouvez utiliser"', () => {
   const input = "Un moyen est d’utiliser"
   const output = "Un autre moyen est d’utiliser"
-  expect(_debobardize(input)).toBe(output);
+  expect((_debobardize(input)).text).toBe(output);
 });
 
 test('debobardizes several lines', () => {
   const input = "lorem\n\nipsum"
   const output = "Lorem\n\nIpsum"
-  expect(_debobardize(input)).toBe(output);
+  expect((_debobardize(input)).text).toBe(output);
 });

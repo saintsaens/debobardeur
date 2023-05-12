@@ -4,6 +4,8 @@ import { postData } from './api';
 
 const text = ref('');
 const response = ref('');
+const suppressions = ref('');
+const remplacements = ref('');
 const copySuccess = ref(false);
 
 async function handleKeyDown(event: KeyboardEvent) {
@@ -18,7 +20,10 @@ async function handleKeyDown(event: KeyboardEvent) {
 };
 
 async function updateResponse() {
-  response.value = await postData(text.value);
+  const data = await postData(text.value);
+  response.value = data.text;
+  suppressions.value = data.modifications.suppressions;
+  remplacements.value = data.modifications.remplacements;
 };
 
 async function copyResponse() {
@@ -47,14 +52,21 @@ async function copyResponse() {
         {{ response }}
       </p>
 
-      <span class="material-symbols-outlined copy-icon" @click="copyResponse">
+      <span class="material-symbols-outlined copy-icon" :class="{ 'flash': copySuccess }" @click="copyResponse">
         content_copy
       </span>
     </div>
-    <p v-if="copySuccess">Copié dans le presse-papiers !</p>
+    <div v-if="response">
+      Modifications :
+      <br>
+      <ul>
+        <li v-for="suppression in suppressions" :key="suppression"><span class="removed">{{ suppression }}</span></li>
+        <li v-for="remplacement in remplacements" :key="remplacement"><span class="removed">{{ remplacement.old }}</span> → {{ remplacement.new }}</li>
+      </ul>
+    </div>
     <footer class="footer">
       <div class="footer-left">
-        <p class="footer-left-text">2023-05-11 14:22:35 +0200 — 0.1.0 (201).</p>
+        <p class="footer-left-text">2023-05-12 16:57 — 0.1.0 (203).</p>
       </div>
       <div class="footer-center">
         <p>Le débobardeur est une application <a href="https://github.com/saintsaens/debobardeur" target="_blank"
@@ -143,6 +155,25 @@ async function copyResponse() {
     display: flex;
     justify-content: center;
     flex-grow: 1;
+  }
+
+  .flash {
+    animation: flash 0.5s;
+  }
+
+  @keyframes flash {
+    0% {
+      background-color: white;
+    }
+
+    100% {
+      background-color: inherit;
+    }
+  }
+
+  .removed {
+    text-decoration: line-through;
+    color: #ff6666;
   }
 
 }
