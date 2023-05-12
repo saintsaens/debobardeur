@@ -56,17 +56,17 @@ async function copyResponse() {
         content_copy
       </span>
     </div>
-    <div v-if="suppressions.length > 0 || remplacements.length > 0">
-      Modifications :
-      <ul>
-        <li v-for="suppression in suppressions" :key="suppression"><span class="removed">{{ suppression }}</span></li>
-        <li v-for="remplacement in remplacements" :key="remplacement"><span class="removed">{{ remplacement.old }}</span> → {{ remplacement.new }}</li>
-      </ul>
-    </div>
-    <p v-else>Aucun bobard. 🎉</p>
+      <div v-if="suppressions.length > 0 || remplacements.length > 0">
+        Modifications :
+        <ul>
+          <li v-for="suppression in suppressions" :key="suppression"><span class="removed">{{ suppression }}</span></li>
+          <li v-for="remplacement in remplacements" :key="remplacement"><span class="removed">{{ remplacement.old }}</span> → {{ remplacement.new }}</li>
+        </ul>
+      </div>
+      <p v-if="response && suppressions.length == 0 && remplacements.length == 0">Aucun bobard. 🎉</p>
     <footer class="footer">
       <div class="footer-left">
-        <p class="footer-left-text">2023-05-12 17:05 — 0.1.0 (204).</p>
+        <p class="footer-left-text">2023-05-12 17:11 — 0.1.0 (205).</p>
       </div>
       <div class="footer-center">
         <p>Le débobardeur est une application <a href="https://github.com/saintsaens/debobardeur" target="_blank"
