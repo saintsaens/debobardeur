@@ -69,7 +69,7 @@ async function copyResponse() {
     <p v-if="response && suppressions.length == 0 && remplacements.length == 0">Aucun bobard. 🎉</p>
     <footer class="footer">
       <div class="footer-left">
-        <p class="footer-left-text">2023-05-12 22:18 — 0.1.0 (206).</p>
+        <p class="footer-left-text">2023-05-13 11:59 — 0.1.0 (207).</p>
       </div>
       <div class="footer-center">
         <p>Le débobardeur est une application <a href="https://github.com/saintsaens/debobardeur" target="_blank"
