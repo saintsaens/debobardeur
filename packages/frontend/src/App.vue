@@ -69,12 +69,13 @@ async function copyResponse() {
     <p v-if="response && suppressions.length == 0 && remplacements.length == 0">Aucun bobard détecté. 🎉</p>
     <footer class="footer">
       <div class="footer-left">
-        <p class="footer-left-text">2023-05-16 11:43 — 0.1.0 (210).</p>
+        <p class="footer-left-text">2023-05-16 15:35 — 0.1.0 (211).</p>
       </div>
       <div class="footer-center">
-        <p>Le débobardeur est une application <a href="https://github.com/saintsaens/debobardeur" target="_blank"
-            rel="noopener">libre et ouverte</a>. Elle n’utilise pas de cookies. Les textes soumis sont enregistrés dans
-          une base de données.</p>
+      </div>
+      <div class="footer-right">
+        <p><a href="https://flavienrobert.notion.site/propos-du-d-bobardeur-3d74befdf3a449a880815391b585de8e" target="_blank"
+            rel="noopener">À propos</a></p>
       </div>
     </footer>
   </div>
@@ -148,10 +149,10 @@ async function copyResponse() {
       height: 40px;
       display: flex;
       align-items: center;
-      background-color: var(--color-background-light);
+      // background-color: var(--color-background-light);
       color: var(--color-content-soft);
       font: 12px "Lucida Grande", Helvetica, Arial, sans-serif;
-      box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+      // box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
       z-index: 1;
     }
 
@@ -170,7 +171,14 @@ async function copyResponse() {
       justify-content: center;
       flex-grow: 1;
     }
+
+    .footer-right {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 20px;
+    }
   }
+
 
   .flash {
     animation: flash 0.5s;
