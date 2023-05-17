@@ -69,7 +69,7 @@ async function copyResponse() {
     <p v-if="response && suppressions.length == 0 && remplacements.length == 0">Aucun bobard détecté. 🎉</p>
     <footer class="footer">
       <div class="footer-left">
-        <p class="footer-left-text">2023-05-16 15:35 — 0.1.0 (211).</p>
+        <p class="footer-left-text">2023-05-17 22:05 — 0.1.0 (215).</p>
       </div>
       <div class="footer-center">
       </div>
