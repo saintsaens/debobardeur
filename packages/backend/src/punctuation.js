@@ -34,7 +34,7 @@ export function fixLeadingPunctuation(arr) {
 
 export function removeSpacesAfterFinalPeriod(arr) {
   if (arr.length > 0 && arr[arr.length - 1].includes('.')) {
-    arr[arr.length - 1] = arr[arr.length - 1].replace(/\s+$/, '');
+    arr[arr.length - 1] = arr[arr.length - 1].replace(/\s*\.\s*$/, '.');
   }  
   return arr;
 }
@@ -66,6 +66,13 @@ export function fixSpaceBeforeAndAfterPeriod(arr) {
 export function fixSpaceBetweenTwoPeriods(arr) {
   for (let i = 0; i < arr.length; i++) {
     arr[i] = arr[i].replace(/\.\s+\./g, ".");
+  }
+  return arr;
+}
+
+export function fixDoublePeriods(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].replace(/\.{2}(?!\.)/g, ".");
   }
   return arr;
 }
