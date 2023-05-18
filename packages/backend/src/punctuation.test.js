@@ -1,4 +1,4 @@
-import { fixCommas, fixMultipleSpaces, fixLeadingPunctuation, removeSpacesAfterFinalPeriod, fixSpaceBeforeAndAfterPeriod, fixUglyArrows, fixSpacedBrackets, fixPunctuation, fixSpaceBetweenTwoPeriods, fixApostrophes, fixPeriodComma, removeSpacesAfterFinalEllipsis, removeSpacesAfterFinalComma, fixDoublePeriods } from './punctuation.js';
+import { fixCommas, fixMultipleSpaces, fixLeadingPunctuation, removeSpacesAfterFinalPeriod, fixSpaceBeforeAndAfterPeriod, fixUglyArrows, fixSpacedBrackets, fixPunctuation, fixSpaceBetweenTwoPeriods, fixApostrophes, fixPeriodComma, removeSpacesAfterFinalEllipsis, removeSpacesAfterFinalComma, fixDoublePeriods, fixSpaceBetweenTwoCommas } from './punctuation.js';
 
 test('replaces any variation of comma punctuation with comma+space', () => {
   const input = ["oui", " , ", "non", " ,", "peut-être", ",", "bref", "."];
@@ -58,6 +58,12 @@ test('fixes spaces between two periods in case of removal of the whole sentence'
   const input = [ 'Blabla', ' ', 'ça', ' ', 'fonctionne', '. .' ];
   const output = [ 'Blabla', ' ', 'ça', ' ', 'fonctionne', '.' ];
   expect(fixSpaceBetweenTwoPeriods(input)).toStrictEqual(output);
+});
+
+test('fixes spaces between two commas in case of removal of the whole sentence', () => {
+  const input = [ 'Ensuite', ', , ', 'faites', ' ', 'ça', '.' ];
+  const output = [ 'Ensuite', ', ', 'faites', ' ', 'ça', '.' ];
+  expect(fixSpaceBetweenTwoCommas(input)).toStrictEqual(output);
 });
 
 test('fixes double periods', () => {

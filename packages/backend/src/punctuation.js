@@ -70,6 +70,13 @@ export function fixSpaceBetweenTwoPeriods(arr) {
   return arr;
 }
 
+export function fixSpaceBetweenTwoCommas(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].replace(/\,\s+\,/g, ",");
+  }
+  return arr;
+}
+
 export function fixDoublePeriods(arr) {
   for (let i = 0; i < arr.length; i++) {
     arr[i] = arr[i].replace(/\.{2}(?!\.)/g, ".");
@@ -111,6 +118,7 @@ export function fixPunctuation(text) {
   split_text = removeSpacesAfterFinalPeriod(split_text);
   split_text = removeSpacesAfterFinalEllipsis(split_text);
   split_text = fixSpaceBetweenTwoPeriods(split_text);
+  split_text = fixSpaceBetweenTwoCommas(split_text);
   split_text = fixDoublePeriods(split_text);
   split_text = fixSpacedBrackets(split_text);
 
