@@ -111,6 +111,7 @@ export function fixPunctuation(text) {
   split_text = removeSpacesAfterFinalPeriod(split_text);
   split_text = removeSpacesAfterFinalEllipsis(split_text);
   split_text = fixSpaceBetweenTwoPeriods(split_text);
+  split_text = fixDoublePeriods(split_text);
   split_text = fixSpacedBrackets(split_text);
 
   // Stitch the list back together.
