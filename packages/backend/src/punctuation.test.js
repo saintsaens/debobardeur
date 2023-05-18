@@ -18,16 +18,22 @@ test('replaces any multiple space with single space', () => {
   expect(fixMultipleSpaces(input)).toStrictEqual(output);
 });
 
-test('removes any starting character that isn’t an alphabetic character', () => {
-  const input = [".", ",  ", "-", ".     ", " ", "Oui", "."];
-  const output = ["Oui", "."];
-  expect(fixLeadingPunctuation(input)).toStrictEqual(output);
+test('removes any starting character that isn’t an alphabetic character, or a curved opening bracket', () => {
+  const input1 = [".", ",  ", "-", ".     ", " ", "Oui", "."];
+  const output1 = ["Oui", "."];
+  const input2 = ["[", "Oui", "."];
+  const output2 = ["[", "Oui", "."];
+  expect(fixLeadingPunctuation(input1)).toStrictEqual(output1);
+  expect(fixLeadingPunctuation(input2)).toStrictEqual(output2);
 });
 
 test('removes space after the final period', () => {
-  const input = ['Hello', 'world', '. '];
-  const output = ['Hello', 'world', '.'];
-  expect(removeSpacesAfterFinalPeriod(input)).toStrictEqual(output);
+  const input1 = ['Hello', 'world', '. '];
+  const output1 = ['Hello', 'world', '.'];
+  const input2 = [' [', 'OÙ', ' ?]. '];
+  const output2 = [' [', 'OÙ', ' ?].'];
+  expect(removeSpacesAfterFinalPeriod(input1)).toStrictEqual(output1);
+  expect(removeSpacesAfterFinalPeriod(input2)).toStrictEqual(output2);
 });
 
 test('removes space after the final comma', () => {

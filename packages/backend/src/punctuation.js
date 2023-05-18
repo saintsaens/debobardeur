@@ -33,20 +33,16 @@ export function fixLeadingPunctuation(arr) {
 }
 
 export function removeSpacesAfterFinalPeriod(arr) {
-  if (arr.length > 0) {
-    if (arr[arr.length - 1].includes('.')) {
-      arr[arr.length - 1] = arr[arr.length - 1].trim();
-    }
-  }
+  if (arr.length > 0 && arr[arr.length - 1].includes('.')) {
+    arr[arr.length - 1] = arr[arr.length - 1].replace(/\s+$/, '');
+  }  
   return arr;
 }
 
 export function removeSpacesAfterFinalComma(arr) {
-  if (arr.length > 0) {
-    if (arr[arr.length - 1].includes(',')) {
-      arr[arr.length - 1] = arr[arr.length - 1].trim();
-    }
-  }
+  if (arr.length > 0 && arr[arr.length - 1].includes(',')) {
+    arr[arr.length - 1] = arr[arr.length - 1].replace(/\s+$/, '');
+  }  
   return arr;
 }
 
