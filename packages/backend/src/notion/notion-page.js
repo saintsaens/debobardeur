@@ -39,11 +39,23 @@ export function getPagePropertyByName(pageObject, propertyName) {
   return property
 }
 
+// Split the string into an array with elements of maximum length.
+function splitStringIntoArray(str, maxLength) {
+  const result = [];
+  for (let i = 0; i < str.length; i += maxLength) {
+    result.push(str.slice(i, i + maxLength));
+  }
+  return result;
+}
+
 export async function createPageInDatabase(databaseId, input, output) {
-  const truncated_input = input.slice(0, 50);
+  const MAX_LENGTH = 1500;
   
+  const inputArray = splitStringIntoArray(input, MAX_LENGTH);
+  const truncated_input = input.slice(0, 50);
+
   const response = await notion.pages.create({
-    
+
     // Indicate it should be added to a database.
     "parent": {
       "type": "database_id",
@@ -65,7 +77,7 @@ export async function createPageInDatabase(databaseId, input, output) {
 
     // Fill in the body of the page.
     "children": [
-      
+
       // First element is a paragraph of the input text.
       {
         "object": "block",
