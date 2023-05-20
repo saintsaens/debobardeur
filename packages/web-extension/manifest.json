@@ -1,10 +1,10 @@
 {
   "name": "Débobardeur",
   "description": "Remove French bullshit.",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "manifest_version": 3,
   "action": {
-    "default_popup": "hello.html",
+    "default_popup": "dbbd_extension.html",
     "default_icon": "dbbd_extension.png"
   },
   "icons": {
@@ -41,8 +41,8 @@
   "commands": {
     "run-debobardize": {
       "suggested_key": {
-        "default": "Ctrl+Period",
-        "mac": "Command+Period"
+        "default": "Ctrl+E",
+        "mac": "Command+E"
       },
       "description": "Run debobardize on the current page."
     }

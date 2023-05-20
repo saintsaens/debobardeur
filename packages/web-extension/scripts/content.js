@@ -19,10 +19,10 @@ if (document.activeElement.isContentEditable) {
     const response = await chrome.runtime.sendMessage({ message: updatedMessage });
     const newText = response.debobard;
 
-    // Split the string into an array based on newline character
+    // Split the string into an array based on newline character.
     const textArray = newText.split('\n');
 
-    // Create div elements for each text element in the array
+    // Create div elements for each text element in the array.
     const divArray = textArray.map(text => {
       if (text === '') {
         return '<div><br></div>';
@@ -31,9 +31,18 @@ if (document.activeElement.isContentEditable) {
       }
     });
 
-    // Join the div elements to form the updated string
+    // Join the div elements to form the updated string.
     const updatedString = divArray.join('');
 
+    // Replace the text.
     document.activeElement.innerHTML = updatedString;
+
+    // Move cursor to the end of the text.
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(document.activeElement);
+    range.collapse(false);
+    selection.removeAllRanges();
+    selection.addRange(range);
   })();
 }
