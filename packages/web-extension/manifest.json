@@ -21,13 +21,20 @@
     "activeTab",
     "scripting"
   ],
+  "host_permissions": [
+    "https://api-debobardeur.troal.me/"
+  ],
+  "externally_connectable": {
+    "matches": ["https://api-debobardeur.troal.me/"]
+  },
   "content_scripts": [
     {
       "js": [
         "scripts/content.js"
       ],
       "matches": [
-        "https://*/*"
+        "https://mail.google.com/*",
+        "https://stackoverflow.com/*"
       ]
     }
   ],
