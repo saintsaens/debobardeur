@@ -38,7 +38,9 @@ export function writeRemplacerRulesIntoFile(rulesObject, filename) {
 }
 
 export function writeSupprimerRulesIntoFile(rulesArray, filename) {
-  writeFileSync(filename, JSON.stringify(rulesArray), (err) => {
+  const rulesString = rulesArray.join('\n');
+  
+  writeFileSync(filename, rulesString, (err) => {
     if (err) {
       console.error(err);
       return;
