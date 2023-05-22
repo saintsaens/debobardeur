@@ -5,7 +5,10 @@ export function removeElementFromText(text, element) {
 }
 
 export function replaceElementFromText(text, oldElement, newElement) {
-  let textWithReplacedElement = text.replace(new RegExp(oldElement, "gi"), newElement);
+  // Escape parentheses in oldElement, since we’re regexping its ass later on.
+  const escapedOldElement = oldElement.replace(/[()]/g, "\\$&");
+  
+  const textWithReplacedElement = text.replace(new RegExp(escapedOldElement, "gi"), newElement);
 
   return textWithReplacedElement;
 }

@@ -59,7 +59,7 @@ export function debobardize(textWithBobards) {
 export function removeBobards(text, bobards) {
   let newText = text;
   bobards.forEach(word => {
-    if (text.toLowerCase().includes(word.toLowerCase())) {
+    if (newText.toLowerCase().includes(word.toLowerCase())) {
       newText = removeElementFromText(newText, word);
 
       // Log the removed elements.
