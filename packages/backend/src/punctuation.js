@@ -91,6 +91,13 @@ export function fixPeriodComma(arr) {
   return arr;
 }
 
+export function fixCommaPeriod(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].replace(/,\./g, ".");
+  }
+  return arr;
+}
+
 export function fixUglyArrows(text) {
   const niceArrowedText = text.replace(/->/g, '→');
   return niceArrowedText;
@@ -116,6 +123,7 @@ export function fixPunctuation(text) {
   split_text = fixPeriodComma(split_text);
   split_text = removeSpacesAfterFinalComma(split_text);
   split_text = removeSpacesAfterFinalPeriod(split_text);
+  split_text = fixCommaPeriod(split_text);
   split_text = removeSpacesAfterFinalEllipsis(split_text);
   split_text = fixSpaceBetweenTwoPeriods(split_text);
   split_text = fixSpaceBetweenTwoCommas(split_text);

@@ -1,4 +1,4 @@
-import { fixCommas, fixMultipleSpaces, fixLeadingPunctuation, removeSpacesAfterFinalPeriod, fixSpaceBeforeAndAfterPeriod, fixUglyArrows, fixSpacedBrackets, fixPunctuation, fixSpaceBetweenTwoPeriods, fixApostrophes, fixPeriodComma, removeSpacesAfterFinalEllipsis, removeSpacesAfterFinalComma, fixDoublePeriods, fixSpaceBetweenTwoCommas } from './punctuation.js';
+import { fixCommas, fixMultipleSpaces, fixLeadingPunctuation, removeSpacesAfterFinalPeriod, fixSpaceBeforeAndAfterPeriod, fixUglyArrows, fixSpacedBrackets, fixPunctuation, fixSpaceBetweenTwoPeriods, fixApostrophes, fixPeriodComma, removeSpacesAfterFinalEllipsis, removeSpacesAfterFinalComma, fixDoublePeriods, fixSpaceBetweenTwoCommas, fixCommaPeriod } from './punctuation.js';
 
 test('replaces any variation of comma punctuation with comma+space', () => {
   const input = ["oui", " , ", "non", " ,", "peut-être", ",", "bref", "."];
@@ -76,6 +76,12 @@ test('fixes period+comma into period in case of removal of an expression', () =>
   const input = [ 'Blabla', '., ', 'la', ' ', 'seule', '.' ];
   const output = [ 'Blabla', '. ', 'la', ' ', 'seule', '.' ];
   expect(fixPeriodComma(input)).toStrictEqual(output);
+});
+
+test('fixes comma+period into period in case of removal of an expression', () => {
+  const input = [ 'Blabla', ',. ', 'la', ' ', 'seule', ',.' ];
+  const output = [ 'Blabla', '. ', 'la', ' ', 'seule', '.' ];
+  expect(fixCommaPeriod(input)).toStrictEqual(output);
 });
 
 test('does not change spacing if period is a dot', () => {
