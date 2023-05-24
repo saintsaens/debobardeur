@@ -70,22 +70,43 @@ function createTrelloInnerHTMLFromArray(inputArray) {
   const tempDivElement = document.createElement('div');
   const paragraphs = inputArray.map((text) => `<p>${text}</p>`);
   tempDivElement.innerHTML = paragraphs.join('');
-  
+
   const text = tempDivElement.innerHTML;
 
   return text;
 }
 
+async function editTrelloText(text) {
+  const response = await chrome.runtime.sendMessage({ message: text });
+  const newText = response.debobard;
+  return newText;
+}
+
 function debobardizeTrello() {
   if (location.href.startsWith("https://trello.com/") && document.activeElement.isContentEditable) {
 
-    const trelloMessageHtml = document.activeElement.innerHTML;
+    const activeElement = document.activeElement;
 
-    const trelloMessageArray = createArrayFromTrelloInnerHTML(trelloMessageHtml);
+    traverseDOMStructure(activeElement, editTrelloText);
 
-    const updatedTrelloMessageHtml = createTrelloInnerHTMLFromArray(trelloMessageArray);
+    async function traverseDOMStructure(element, editFunction) {
+      if (element.nodeType === Node.TEXT_NODE) {
+        element.textContent = await editFunction(element.textContent);
+      } else {
+        const childNodes = element.childNodes;
+        for (let i = 0; i < childNodes.length; i++) {
+          traverseDOMStructure(childNodes[i], editFunction);
+        }
+      }
+    }
 
-    console.log(updatedTrelloMessageHtml);
+    // Move cursor to the end of the text.
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(document.activeElement);
+    range.collapse(false);
+    selection.removeAllRanges();
+    selection.addRange(range);
   }
 }
 
