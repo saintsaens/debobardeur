@@ -87,18 +87,26 @@ function debobardizeTrello() {
 
     const activeElement = document.activeElement;
 
-    traverseDOMStructure(activeElement, editTrelloText);
+    traverseDOMStructure(activeElement, editTrelloText, true);
 
-    async function traverseDOMStructure(element, editFunction) {
+    async function traverseDOMStructure(element, editFunction, ignoreFirstMentionView = false) {
       if (element.nodeType === Node.TEXT_NODE) {
         element.textContent = await editFunction(element.textContent);
       } else {
         const childNodes = element.childNodes;
         for (let i = 0; i < childNodes.length; i++) {
-          traverseDOMStructure(childNodes[i], editFunction);
+          const childNode = childNodes[i];
+          const isMentionView = childNode.nodeName === 'SPAN' && childNode.classList.contains('mentionView-content-wrap');
+    
+          if (ignoreFirstMentionView && isMentionView) {
+            ignoreFirstMentionView = false; // Set flag to false after encountering the first mentionView
+          } else {
+            await traverseDOMStructure(childNode, editFunction, ignoreFirstMentionView);
+          }
         }
       }
     }
+    
 
     // Move cursor to the end of the text.
     var selection = window.getSelection();
