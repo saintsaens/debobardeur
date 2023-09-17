@@ -43,7 +43,7 @@ async function copyResponse() {
 <template>
   <div class="wrapper">
     <div class="input-wrapper">
-      <textarea v-model="text" class="input" @keydown="handleKeyDown" autofocus placeholder="Entrez votre texte.">
+      <textarea v-model="text" class="input" @keydown="handleKeyDown" autofocus placeholder="Exemple : Je suis très content.">
         </textarea>
     </div>
     <div class="button-wrapper">
@@ -69,7 +69,7 @@ async function copyResponse() {
     <p v-if="response && suppressions.length == 0 && remplacements.length == 0">Aucun bobard détecté. 🎉</p>
     <footer class="footer">
       <div class="footer-left">
-        <p class="footer-left-text">2023-05-24 16:25 — 0.1.0 (241).</p>
+        <p class="footer-left-text">2023-09-17 14:54 — 0.1.0 (242).</p>
       </div>
       <div class="footer-center">
       </div>
